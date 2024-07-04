@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+/*========== Base ==========*/
+* { font-family: 'Pretendard Variable'; letter-spacing: -0.025em; } 
+*,::before,::after { box-sizing: border-box; } 
+html { width: 100%; font-family: 'Pretendard Variable'; font-weight: 500; font-variation-settings: 'wght' 500; color: #333; letter-spacing: -0.025em; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; } 
+body { width: 100%; margin: 0; font-size: 16px; color: #333; line-height: 1.25; letter-spacing: -0.025em; } 
+a { display: block; text-decoration: none; color: #333; cursor: pointer; } 
+img { width: 100%; max-width: 100%; object-fit: cover; vertical-align: middle; -webkit-user-drag: none; } 
+img:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; } 
+h1,h2,h3,h4,h5,h6 { font-weight: 700; font-variation-settings: 'wght' 700; letter-spacing: -0.025em; } 
+canvas * { font-family: 'Outfit Variable' !important; } 
+input::-ms-clear { display: none; } 
+input[type="password"]::-ms-reveal,input[type="password"]::-ms-clear { display: none; } 
+input[type="number"] { appearance: textfield; -moz-appearance: textfield; -webkit-appearance: textfield; } 
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { appearance: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; } 
+textarea { resize: none; } 
+button { background: inherit; border: none; background-color: transparent; box-shadow: none; padding: 0; cursor: pointer; } 
+select { -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; } 
+select::-ms-expand { display: none; } 
+input,textarea,button { border: none; appearance: none; -moz-appearance: none; -webkit-appearance: none; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; } 
+a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; } 
+:focus, input:focus, textarea:focus,button:focus,select:focus,input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; } 
+:focus-visible, button:focus-visible { outline: 1px solid #172741; } 
+.disabled,:disabled { outline: none !important; } 
+.none { display: none; } 
+.hidden { position: absolute; left: -9999px; display: none; visibility: hidden; opacity: 0; overflow: hidden; } 
+.clearfix:before,.clearfix:after { display: block; content: ""; line-height: 0; clear: both; } 
+.f-left { float: left; } 
+.f-right { float: right; } 
+.off { display: none; } 
+.scroll-none { overflow: hidden; } 
+
+/*========== Header ==========*/
+.header-top { display: flex; justify-content: flex-end; align-items: center; width: calc(100% - 190px); height: 56px; padding: 20px; background-color: #fff; margin-left: auto; gap: 20px; box-shadow: 5px 5px 20px rgba(0 , 0, 0, 0.1); } 
+.header-top .header-profile span { color: var(--dark-blue); font-variation-settings: 'wght' 600; } 
+.header-top .logout-btn span { margin-left: 4px; } 
+.header-left { position: absolute; top: 0; left: 0; display: flex; flex-direction: column; align-items: center; width:190px; height: 100%; background-color: var(--dark-blue); padding: 20px 0; gap: 50px; } 
+.header-logo a { padding: 0 20px; } 
+.nav { display: flex; flex-direction: column; width: 100%; } 
+.nav .menu-list.active { background-color: #3C3D79; } 
+.nav .menu-list a { padding: 15px 20px; color: #fff; } 
+.nav .menu-list a span { margin-left: 10px; } 
+
+/*========== Footer ==========*/
+#footer { display: flex; justify-content: center; align-items: center; width: calc(100% - 190px); height: 56px; margin-left: auto; } 
+#footer .copyright { font-size: 13px; text-align: center; color: #666; } 
+
+/*========== Login ==========*/
+.wnow-login { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; background-color: var(--light-gray); } 
+.login-sec { width: 480px; margin: 0 auto; padding: 60px; background-color: #fff; } 
+.login-logo-box { display: flex; justify-content: center; } 
+.login-logo-box figure { width: 200px; } 
+.login-form-area { margin: 40px 0 0; } 
+.login-form-area .login-form-wrap { display: flex; flex-direction: column; gap: 10px; margin: 0 0 20px; } 
+.login-form-area .id-save-wrap { margin-bottom: 20px; } 
+.login-form-area .btn-wrap { display: flex; gap: 10px; } 
+.login-form-area .btn-wrap .login-btn { flex: 1 } 
+.login-form-area .btn-wrap .join-btn { border: 1px solid var(--main-blue); background-color: #fff; color: var(--main-blue); } 

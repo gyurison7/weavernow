@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+	<!-- favicon -->
+    <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+    <!-- css -->
+    <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="../asset/css/common.css">
+	<!-- js -->
+	<script src="../asset/js/jquery-1.12.4.min.js"></script>
+	<script src="../asset/js/basic.js"></script>
+    <title>Weaver Now</title>
+</head>
+<body>
+    <div id="wrap">
+
+		<!--========== CONTENTS ==========-->
+		<main class="wnow-login">
+            <section class="section login-sec">
+                <h2 class="section-tit hidden">WEAVER NOW 로그인</h2>
+                <div class="login-logo-box">
+                    <figure class="logo"><img src="../asset/images/common/logo-black.svg" alt="Weaver Now 로고"></figure>
+                </div>
+                <div class="login-form-area">
+                    <form>
+                        <fieldset>
+                            <legend class="hidden">로그인 - 정보입력</legend>
+                            <div class="login-form-wrap">
+                                 <!-- 
+                                    # 아이디, 패스워드 오류시 login-form-wrap 클래스 error 추가  
+                                -->
+                                <div class="input-box-wrap">
+                                    <div class="input-box text">
+                                        <input type="text" name="id" class="id" placeholder="아이디" autofocus>
+                                    </div>
+                                </div>
+                                <div class="input-box-wrap">
+                                    <div class="input-box password">
+                                        <input type="password" name="password" class="pw" placeholder="비밀번호">
+                                    </div>
+                                </div>
+                                <div class="error-wrap">
+                                    <p class="error login-error wrong">아이디 또는 비밀번호가 올바르지 않습니다. </p>
+                                </div>
+                            </div>
+                            <div class="id-save-wrap">
+                                <div class="basic-check-box">
+                                    <input type="checkbox" id="id-save-check-box" tabindex="-1">
+                                    <label for="id-save-check-box" tabindex="0">아이디 저장</label>
+                                </div>
+                            </div>
+                            <div class="btn-wrap submit login">
+                                <button type="submit" class="common-btn login-btn" >로그인</button>
+                                <a href="javascript:;" class="common-btn join-btn">회원가입</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</body>
+</html>

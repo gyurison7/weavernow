@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--========== HEADER ==========-->
+            <div class="header-wrap"></div>
+            <script>
+                $(function () {
+                    $(".header-wrap").load("include/header.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/header.js");
+                    });
+                });
+            </script>
+
+            <!--========== CONTENTS ==========-->
+            <main class="main">
+                <section class="section">
+                    <div class="title-area">
+                        <h2 class="section-tit">영풍문고</h2>
+                    </div>
+                    <div class="contents">
+                        <div class="inner">
+                            <div class="cont-tit clearfix">
+                                <div class="btn-wrap f-right">
+                                    <a href="project-list-reg.html" class="common-btn modify-btn"><span>수정</span></a>
+                                    <button class="common-btn"><span>적용</span></button>
+                                </div>
+                            </div>
+                            <div class="common-table-wrap">
+                                <table class="common-table main-table">
+                                    <caption class="hidden">프로젝트 상세 현황</caption>
+                                    <thead>
+                                        <tr>
+                                            <th class="cell-th cell-min" scope="col"><div class="con-th">기준일</div></th>
+                                            <th class="cell-th" colspan="5" scope="col"><div class="con-th">직급 및 동급</div></th>
+                                            <th class="cell-th" colspan="2" scope="col"><div class="con-th">견적용 노임단가</div></th>
+                                            <th class="cell-th" colspan="3" scope="col"><div class="con-th">실급여(내부손익계산용)</div></th>
+                                        </tr>
+                                        <tr>
+                                            <th class="cell-th cell-min"><div class="con-th">24.06</div></th>
+                                            <th class="cell-th"><div class="con-th">소속</div></th>
+                                            <th class="cell-th"><div class="con-th">직급</div></th>
+                                            <th class="cell-th"><div class="con-th">직무</div></th>
+                                            <th class="cell-th"><div class="con-th">기술등급</div></th>
+                                            <th class="cell-th"><div class="con-th">연차</div></th>
+                                            <th class="cell-th"><div class="con-th">노임단가</div></th>
+                                            <th class="cell-th"><div class="con-th">총비용</div></th>
+                                            <th class="cell-th"><div class="con-th">연봉</div></th>
+                                            <th class="cell-th"><div class="con-th">월급여</div></th>
+                                            <th class="cell-th"><div class="con-th">월급여*2</div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="cell-td" scope="row"><div class="con-td">홍길동</div></td>
+                                            <td class="cell-td"><div class="con-td">기획팀</div></td>
+                                            <td class="cell-td"><div class="con-td">부장</div></td>
+                                            <td class="cell-td">
+                                                <div class="con-td">
+                                                    <select name="select-job" id="select-job">
+                                                        <option>선택</option>
+                                                        <option value="">IT기획자</option>
+                                                        <option value="">IT컨설턴트</option>
+                                                        <option value="">업무분석가</option>
+                                                        <option value="">데이터분석가</option>
+                                                        <option value="">IT PM</option>
+                                                        <option value="">IT아키텍트</option>
+                                                        <option value="">UI/UX기획/개발자</option>
+                                                        <option value="">UI/UX디자이너</option>
+                                                        <option value="">응용SW개발자</option>
+                                                        <option value="">시스템SW개발자</option>
+                                                        <option value="">정보시스템운용자</option>
+                                                        <option value="">IT지원기술자</option>
+                                                        <option value="">IT마케터</option>
+                                                        <option value="">IT품질관리자</option>
+                                                        <option value="">IT테스터</option>
+                                                        <option value="">IT감리</option>
+                                                        <option value="">정보보안전문가</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td class="cell-td"><div class="con-td">특급</div></td>
+                                            <td class="cell-td"><div class="con-td">14</div></td>
+                                            <!-- basic.js .num 숫자 자리수 스크립트 참조 -->
+                                            <td class="cell-td"><div class="con-td num">15142174</div></td>
+                                            <td class="cell-td"><div class="con-td num">36341218</div></td>
+                                            <td class="cell-td"><div class="con-td num">100000000</div></td>
+                                            <td class="cell-td"><div class="con-td num">8333333</div></td>
+                                            <td class="cell-td"><div class="con-td num">16666667</div></td>
+                                        </tr>
+                                        <!-- 합계 -->
+                                        <tr class="sum">
+                                            <td class="cell-td" scope="row"><div class="con-td">합계</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class= "con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td num">162878306</div></td>
+                                            <td class="cell-td"><div class="con-td num">390907934</div></td>
+                                            <td class="cell-td"><div class="con-td num">1190000000</div></td>
+                                            <td class="cell-td"><div class="con-td num">99166667</div></td>
+                                            <td class="cell-td"><div class="con-td num">198333333</div></td>
+                                        </tr>
+                                        <!-- 합계 : 노임단가 -->
+                                        <tr>
+                                            <td class="cell-td" colspan="7" scope="row"><div class="con-td">합계(노임단가)</div></td>
+                                            <td class="cell-td"><div class="con-td num">1316354463</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                        </tr>
+                                        <!-- 합계 : 실급여 -->
+                                        <tr>
+                                            <td class="cell-td" colspan="7" scope="row"><div class="con-td">합계(실급여)</div></td>
+                                            <td class="cell-td"><div class="con-td num">664259709</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="add-table-wrap">
+                                    <table class="common-table add-table">
+                                        <caption class="hidden">프로젝트 상세 현황</caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="cell-th" colspan="3" scope="col"><div class="con-th">2023.12</div></th>
+                                            </tr>
+                                            <tr>
+                                                <th class="cell-th"><div class="con-th">공수(일)</div></th>
+                                                <th class="cell-th"><div class="con-th">노임단가비용</div></th>
+                                                <th class="cell-th"><div class="con-th">실급여비용</div></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell-td" scope="row"><div class="con-td">9</div></td>
+                                                <td class="cell-td"><div class="con-td num">1587230</div></td>
+                                                <td class="cell-td"><div class="con-td num">7281553</div></td>
+                                            </tr>
+                                            <!-- 합계 -->
+                                            <tr class="sum">
+                                                <td class="cell-td" scope="row"><div class="con-td">76</div></td>
+                                                <td class="cell-td"><div class="con-td num">101842789</div></td>
+                                                <td class="cell-td"><div class="con-td num">50161812</div></td>
+                                            </tr>
+                                            <!-- 합계 : 노임단가 -->
+                                            <tr>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                            <!-- 합계 : 실급여 -->
+                                            <tr>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="common-table add-table last-table">
+                                        <caption class="hidden">프로젝트 상세 현황</caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="cell-th" colspan="3" scope="col"><div class="con-th">2024.01</div></th>
+                                            </tr>
+                                            <tr>
+                                                <th class="cell-th"><div class="con-th">공수(일)</div></th>
+                                                <th class="cell-th"><div class="con-th">노임단가비용</div></th>
+                                                <th class="cell-th"><div class="con-th">실급여비용</div></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell-td" scope="row">
+                                                    <div class="con-td">
+                                                        <div class="input-box-wrap">
+                                                            <div class="input-box text">
+                                                                <input type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="cell-td"><div class="con-td num">1587230</div></td>
+                                                <td class="cell-td"><div class="con-td num">7281553</div></td>
+                                            </tr>
+                                            <!-- 합계 -->
+                                            <tr class="sum">
+                                                <td class="cell-td" scope="row"><div class="con-td">140</div></td>
+                                                <td class="cell-td"><div class="con-td num">183266839</div></td>
+                                                <td class="cell-td"><div class="con-td num">91181230</div></td>
+                                            </tr>
+                                            <!-- 합계 : 노임단가 -->
+                                            <tr>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                            <!-- 합계 : 실급여 -->
+                                            <tr>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="cont-tit clearfix">
+                                <div class="btn-wrap f-right">
+                                    <button class="common-btn download-btn">엑셀 다운로드</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!--========== FOOTER ==========-->
+            <footer id="footer"></footer>
+            <script>
+                $(function () {
+                    $("#footer").load("include/footer.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/basic.js");
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>

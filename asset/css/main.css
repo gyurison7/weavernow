@@ -1,0 +1,17 @@
+.cont-tit { font-size: 20px; font-variation-settings: 'wght' 600; } 
+.cont-tit .name { } 
+
+.main-wrap { display: flex; align-items: center; } 
+.profile-area { display: flex; flex-direction: column; align-items: center; width: 20%; gap: 10px; } 
+.profile-area .profile-image { width: 150px; height: 150px; } 
+.profile-area .profile-image img { width: 100%; height: 100%; border-radius: 50%; } 
+.profile-area .profile-info { display: flex; flex-direction: column; align-items: center; gap: 10px; } 
+
+.chart-area { margin: 0 auto; } 
+.chart-area .project-btn-wrap { display: flex; margin: 0 10px 20px; gap: 10px; }
+.chart-area .right-area { display: flex; }
+.chart-area .chart-wrap { width: 500px; height: 500px;  } 
+.chart-area .chart-wrap.chart2 { display: none; } 
+.chart-area .chart-wrap.chart3 { display: none; } 
+.chart-area .chart-btn-wrap { display: flex; flex-direction: column; justify-content: flex-end; margin: 0 20px 34px; gap: 4px; }
+.chart-area .chart-btn-wrap .chart-btn { min-width: 38px; border-radius: 50%; }

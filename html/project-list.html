@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--========== HEADER ==========-->
+            <div class="header-wrap"></div>
+            <script>
+                $(function () {
+                    $(".header-wrap").load("include/header.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/header.js");
+                    });
+                });
+            </script>
+
+            <!--========== CONTENTS ==========-->
+            <main class="main">
+                <section class="section">
+                    <div class="title-area">
+                        <h2 class="section-tit">프로젝트 리스트</h2>
+                    </div>
+                    <div class="contents">
+                        <div class="inner">
+                            <div class="cont-tit clearfix">
+                                <div class="btn-wrap f-right">
+                                    <a href="project-list-reg.html" class="common-btn"><span>프로젝트 생성</span></a>
+                                </div>
+                            </div>
+                            <div class="common-table-wrap">
+                                <table class="common-table last-table">
+                                    <caption class="hidden">프로젝트 리스트</caption>
+                                    <thead>
+                                        <tr>
+                                            <th class="cell-th cell-min" scope="col"><div class="con-th">번호</div></th>
+                                            <th class="cell-th" scope="col"><div class="con-th">프로젝트</div></th>
+                                            <th class="cell-th" scope="col"><div class="con-th">기간</div></th>
+                                            <th class="cell-th" scope="col"><div class="con-th">진행상태</div></th>
+                                            <th class="cell-th" scope="col"><div class="con-th">투입인원</div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="cell-td" scope="row"><div class="con-td">1</div></td>
+                                            <td class="cell-td"><div class="con-td">영풍문고</div></td>
+                                            <td class="cell-td"><div class="con-td">2024.01.01 ~ 2024.06.24</div></td>
+                                            <td class="cell-td">
+                                                <div class="con-td"><span class="status ing">진행중</span></div>
+                                            </td>
+                                            <td class="cell-td"><div class="con-td">6</div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-td" scope="row"><div class="con-td">1</div></td>
+                                            <td class="cell-td"><div class="con-td">영풍문고</div></td>
+                                            <td class="cell-td"><div class="con-td">2024.01.01 ~ 2024.06.24</div></td>
+                                            <td class="cell-td">
+                                                <div class="con-td"><span class="status done">마감</span></div>
+                                            </td>
+                                            <td class="cell-td"><div class="con-td">6</div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-td" scope="row"><div class="con-td">1</div></td>
+                                            <td class="cell-td"><div class="con-td">영풍문고</div></td>
+                                            <td class="cell-td"><div class="con-td">2024.01.01 ~ 2024.06.24</div></td>
+                                            <td class="cell-td">
+                                                <div class="con-td"><span class="status plan">예정</span></div>
+                                            </td>
+                                            <td class="cell-td"><div class="con-td">6</div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!--========== FOOTER ==========-->
+            <footer id="footer"></footer>
+            <script>
+                $(function () {
+                    $("#footer").load("include/footer.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/basic.js");
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
