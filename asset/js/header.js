@@ -8,4 +8,9 @@ $(function () {
             $(this).closest(".menu-list").addClass("active");
         }
     });
+
+    $(".nav-btn").click(function () {
+        $(".header-left, .header-top, .main, #footer").toggleClass("on");
+        $(".fa-angles-left, .fa-bars").toggle();
+    });
 });
