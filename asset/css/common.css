@@ -25,16 +25,18 @@ url('../font/Pretendard-ExtraBold.otf') format('otf'); }
 body { width: 100%; overflow: hidden; background-color: #D8DDE3; } 
 .main { width: calc(100% - 216px); min-height: calc(100vh - (56px * 2)); margin-left: auto; transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
 .main.on { width: calc(100% - 56px); } 
-.inner { position: relative; max-width: 1640px; width: 100%; margin: 0 auto; padding: 20px; } 
+.inner { position: relative; max-width: 1640px; width: 100%; margin: 0 auto; overflow-x: auto } 
+.inner::-webkit-scrollbar { height: 10px; }
+.inner::-webkit-scrollbar-thumb { background: var(--light-blue); border-radius: 8px; }
 .title-area { padding: 20px; } 
 .section-tit { font-size: 24px; } 
-.contents { height: 100%; margin: 0 20px 20px; border: 1px solid var(--dark-gray); border-radius: 8px; background-color: #fff; } 
-.cont-tit { padding: 20px 0; } 
+.contents { min-width: 1000px; height: 100%; margin: 0 20px; border: 1px solid var(--dark-gray); border-radius: 8px; background-color: #fff; } 
+.cont-tit { padding: 20px; } 
 .fa-plus { margin-left: 4px; }
 .fa-file-excel { margin-right: 6px; } 
 
 /*========== Table ==========*/
-.common-table-wrap { display: flex; width: 100%; font-size: 14px; } 
+.common-table-wrap { display: flex; width: 100%; padding: 0 20px 20px; font-size: 14px; } 
 .common-table { width: 100%; border-radius: 4px; border-collapse: collapse; border-spacing: 0; table-layout: auto; word-break: keep-all; } 
 .common-table.main-table { width: 60%; margin-bottom: 9.5px; } 
 .add-table-wrap { display: flex; overflow-x: scroll; width: 40%; } 
@@ -81,7 +83,7 @@ input[type="checkbox"] + label { cursor: pointer; }
 .basic-check-box input[type="checkbox"]:disabled + label::before { background-color: #eee; } 
 
 /*========== Form ==========*/
-.reg-form-area { font-size: 15px; } 
+.reg-form-area { padding: 20px; font-size: 15px; } 
 .reg-form-area .reg-form-wrap { display: flex; flex-direction: column; margin-bottom: 30px; border-top: 1px solid #E6E6E6; border-left: 1px solid #E6E6E6; border-right: 1px solid #E6E6E6; } 
 .reg-form-area .reg-form-wrap .input-box-wrap { display: flex; border-bottom: 1px solid #E6E6E6; } 
 .reg-form-area .reg-form-wrap .input-box { display: flex; align-items: center; flex: 1; } 

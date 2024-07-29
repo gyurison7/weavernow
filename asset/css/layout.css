@@ -36,7 +36,7 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .header-top.on { width: calc(100% - 56px); }
 .header-top .header-profile span { color: var(--dark-blue); font-variation-settings: 'wght' 600; } 
 .header-top .logout-btn span { margin-left: 4px; } 
-.header-left { display: flex; flex-direction: column; align-items: center; position: fixed; top: 0; left: 0; overflow: hidden; width: 216px; height: 100%; background-color: var(--dark-blue); gap: 50px; transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
+.header-left { display: flex; flex-direction: column; align-items: center; position: fixed; top: 0; left: 0; overflow: hidden; width: 216px; height: 100%; background-color: var(--dark-blue); transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
 .header-left.on { width: 56px; }
 .header-left .logo-wrap { display: flex; align-items: center; position: relative; width: 100%; height: 56px; padding: 15px;  background-color: var(--main-blue); }
 .header-left .logo-wrap .header-logo { width: 140px; transition: transform 0.5s ease; -webkit-transition: transform 0.5s ease; -moz-transition: transform 0.5s ease; -ms-transition: transform 0.5s ease; -o-transition: transform 0.5s ease; } 
@@ -44,6 +44,7 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .header-left .logo-wrap .nav-btn { position: absolute; top: 50%; right: 15px; width: 28px; height: 28px; color: #fff; transform: translateY(-50%); -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); }
 .header-left .logo-wrap .nav-btn .fa-bars { display: none; }
 .nav { display: flex; flex-direction: column; width: 100%; } 
+.nav .menu-list { transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; }
 .nav .menu-list.active { background-color: #3C3D79; } 
 .nav .menu-list:hover { background-color: #3C3D79; }
 .nav .menu-list a { overflow: hidden; max-height: 50px; padding: 15px; color: #fff;  } 
