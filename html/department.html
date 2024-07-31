@@ -1,0 +1,1007 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <link rel="stylesheet" href="../asset/css/department.css">
+        <link rel="stylesheet" href="../asset/css/modal.css"/>
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/chart.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+
+<body>
+<div id="wrap">
+    <!-- <%@include file="../include/header.jsp" %> -->
+     <!--========== HEADER ==========-->
+     <div class="header-wrap"></div>
+     <script>
+         $(function () {
+             $(".header-wrap").load("include/header.html", function () {
+                 // 로드된 후에 실행될 코드
+                 $.getScript("../asset/js/header.js");
+             });
+         });
+     </script>
+    <main class="main">
+        <section class="section">
+            <div class="inner">
+                <div class="title-area">
+                    <h2 class="section-tit">조직 관리
+                        <button class="common-btn border-btn small-btn reg-member-btn" onclick="modalOpen(this)">
+                            <span>인원 등록</span>
+                        </button>
+                    </h2>
+                </div>
+
+                <div class="contents">
+                    <div class="container department-container">
+                        <div class="left-panel org-accordion">
+                            <ul class="nav">
+                                <li>조직도</li>
+                                <li class="org-list">
+                                    <a id="1" class="title depart"><span>이사회</span></a>
+                                </li>
+                                <li class="org-list">
+                                    <a id="2" class="title depart"><span>경영지원팀</span></a>
+                                </li>
+                                <li class="org-list">
+                                    <a id="3" class="title depart"><span>전략기획본부</span></a>
+                                    <a id="6" class="next-title desc depart">사업기획팀</a>
+                                    <a id="7" class="next-title desc depart">운영기획팀</a>
+                                </li>
+                                <li class="org-list">
+                                    <a id="4" class="title depart"><span>디자인본부</span></a>
+                                    <a id="8" class="next-title desc depart">디자인팀</a>
+                                    <a id="9" class="next-title desc depart">UX팀</a>
+                                    <a id="10" class="part desc depart">파트1</a>
+                                    <a id="11" class="part desc depart">파트2</a>
+                                </li>
+                                <li class="org-list">
+                                    <a id="5" class="title depart"><span>개발본부</span></a>
+                                    <a id="12" class="next-title desc depart">웹개발팀</a>
+                                    <a id="14" class="part desc depart">파트1</a>
+                                    <a id="15" class="part desc depart">파트2</a>
+                                    <a id="13" class="next-title desc depart">커머스개발팀</a>
+                                    <a id="18" class="part desc depart">파트1</a>
+                                    <a id="19" class="part desc depart">파트2</a>
+                                    <a id="16" class="next-title desc depart">인프라팀</a>
+                                    <a id="17" class="next-title desc depart">SI사업팀</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="center-panel main-content" id="employeeList">
+                            <div class="main-content">
+                                <table id="membersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>직급</th>
+                                            <th>이름</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        <tr onclick="clickMember(10)">
+                                            <td class="rank">CEO</td>
+                                            <td class="name">전세경</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(11)">
+                                            <td class="rank">이사</td>
+                                            <td class="name">지민아</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(12)">
+                                            <td class="rank">이사</td>
+                                            <td class="name">황치원</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(37)">
+                                            <td class="rank">L2</td>
+                                            <td class="name">강윤식</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(14)">
+                                            <td class="rank">L2</td>
+                                            <td class="name">김종협</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(15)">
+                                            <td class="rank">L2</td>
+                                            <td class="name">이선아</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(13)">
+                                            <td class="rank">L2</td>
+                                            <td class="name">장민기</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(43)">
+                                            <td class="rank">L2</td>
+                                            <td class="name">전세영</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(19)">
+                                            <td class="rank">L1</td>
+                                            <td class="name">김혜경</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(17)">
+                                            <td class="rank">L1</td>
+                                            <td class="name">노병열</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(28)">
+                                            <td class="rank">L1</td>
+                                            <td class="name">유동균</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(42)">
+                                            <td class="rank">L1</td>
+                                            <td class="name">조동현</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(33)">
+                                            <td class="rank">P4</td>
+                                            <td class="name">임지훈</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(20)">
+                                            <td class="rank">P4</td>
+                                            <td class="name">장윤희</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(2)">
+                                            <td class="rank">P4</td>
+                                            <td class="name">홍길동</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(7)">
+                                            <td class="rank">P4</td>
+                                            <td class="name">황준석</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(24)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">김선형</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(9)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">김수경</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(38)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">김효정</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(8)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">박근형</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(21)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">서지수</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(6)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">이아진</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(22)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">이혜민</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(39)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">이희권</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(27)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">임혜린</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(44)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">정성찬</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(26)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">최인선</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(29)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">홍두희</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(35)">
+                                            <td class="rank">P3</td>
+                                            <td class="name">황지현</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(16)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">강유림</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(30)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">구수민</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(31)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">김유진</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(5)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">손규리</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(23)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">손지원</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(32)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">안병찬</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(40)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">양희진</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(41)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">이나경</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(36)">
+                                            <td class="rank">P2</td>
+                                            <td class="name">조민경</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(3)">
+                                            <td class="rank">P1</td>
+                                            <td class="name">정승현</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(4)">
+                                            <td class="rank">P1</td>
+                                            <td class="name">조유진</td>
+                                        </tr>
+                                    
+                                        <tr onclick="clickMember(1)">
+                                            <td class="rank">P1</td>
+                                            <td class="name">조준희</td>
+                                        </tr>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="right-panel" id="employeeDetails">
+                            <div class="profile-area">
+                                <div class="profile-image">
+                                    <img src="../asset/images/common/user.webp" alt="">
+                                </div>
+                                <div class="profile-info">
+                                    <table id="infoTable">
+                                        <tbody>
+                                        <tr>
+                                            <th>이름</th>
+                                            <td class="memberName">손규리</td>
+                                        </tr>
+                                        <tr>
+                                            <th>부서</th>
+                                            <td class="memberDepart">디자인본부</td>
+                                        </tr>
+                                        <tr>
+                                            <th>팀</th>
+                                            <td class="memberTeam">UX팀</td>
+                                        </tr>
+                                        <tr>
+                                            <th>파트</th>
+                                            <td class="memberPart">파트1</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="btn-wrap">
+                                <a class="common-btn border-btn small-btn profile-edit-btn" onclick="clickEdit()"><span>수정</span></a>
+                                <a class="common-btn small-btn profile-save-btn" onclick="clickSave()"><span>저장</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="modalWrap">
+                <div id="modalBody">
+                    <div class="inner">
+
+                        <button id="closeBtn"><img src="../asset/images/common/btn-close.svg" alt=""></button>
+
+                        <div class="title-area">
+                            <h2 class="section-tit">유저 등록</h2>
+                        </div>
+
+                        <div class="">
+
+                            <div class="profile-area" style="width : 100%">
+                                <div class="profile-image">
+                                    <img src="../asset/images/common/user.webp" alt="">
+                                </div>
+                            </div>
+
+                            <div class="reg-form-area">
+                                <div class="reg-form-wrap" id="form-wrap">
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="name">이름</label>
+                                            <input class="name" type="text" name="memberName" id="name">
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="grade">기술등급</label>
+                                            <select class="" name="select-job" id="grade">
+                                                <option>선택</option>
+                                                <option value="초급">초급</option>
+                                                <option value="중급">중급</option>
+                                                <option value="고급">고급</option>
+                                                <option value="특급">특급</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <label for="grade">연차</label>
+                                            <input class="year" type="number" name="memberYear" id="year">
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="job">직무</label>
+                                            <select class="job" name="select-job" id="job">
+                                                <option>선택</option>
+                                                <option value="IT기획자">IT기획자</option>
+                                                <option value="IT컨설턴트">IT컨설턴트</option>
+                                                <option value="업무분석가">업무분석가</option>
+                                                <option value="데이터분석가">데이터분석가</option>
+                                                <option value="IT PM">IT PM</option>
+                                                <option value="IT아키텍트">IT아키텍트</option>
+                                                <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                                <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                                <option value="응용SW개발자">응용SW개발자</option>
+                                                <option value="시스템SW개발자">시스템SW개발자</option>
+                                                <option value="정보시스템운용자">정보시스템운용자</option>
+                                                <option value="IT지원기술자">IT지원기술자</option>
+                                                <option value="IT마케터">IT마케터</option>
+                                                <option value="IT품질관리자">IT품질관리자</option>
+                                                <option value="IT테스터">IT테스터</option>
+                                                <option value="IT감리">IT감리</option>
+                                                <option value="정보보안전문가">정보보안전문가</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-box">
+                                            <label for="rank">직급</label>
+                                            <select class="" name="select-job" id="rank">
+                                                <option>선택</option>
+                                                <option value="P1">P1</option>
+                                                <option value="P2">P2</option>
+                                                <option value="P3">P3</option>
+                                                <option value="P4">P4</option>
+                                                <option value="L1">L1</option>
+                                                <option value="L2">L2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="depart">부서</label>
+                                            <select class="select-depart" name="team" id="depart"
+                                                    onchange="changeInfo(this)">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="team">팀</label>
+                                            <select class="select-team" name="part" id="team"
+                                                    onchange="changeInfo(this)">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="part">파트</label>
+                                            <select class="select-part" id="part">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="grade">연봉</label>
+                                            <input class="salary" type="text" name="memberSalary" id="salary"
+                                                   onkeyup="changeWithComma(this)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-area" style="text-align: center">
+                                    <button class="common-btn cancel-btn" onclick="cancelBtn()">취소</button>
+                                    <button type="submit" class="common-btn" style="margin-left: 10px"
+                                            onclick="saveMember()">저장
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <!--========== FOOTER ==========-->
+     <footer id="footer"></footer>
+     <script>
+         $(function () {
+             $("#footer").load("include/footer.html", function () {
+                 // 로드된 후에 실행될 코드
+                 $.getScript("../asset/js/basic.js");
+             });
+         });
+     </script>
+</div>
+<script>
+
+    let memberSeq;
+    let departSize;
+    let isClickEdit = false;
+
+    $(document).ready(async function () {
+        let result = await getChildDepartment(-1);
+        let departSelectElements = document.querySelectorAll('.select-depart');
+        departSelectElements.forEach((select) => {
+            result.childList.forEach((element) => {
+                let option = document.createElement('option');
+                option.value = element.seq;
+                option.text = element.name;
+                select.appendChild(option);
+            })
+        })
+    })
+
+    function changeWithComma(e) {
+        let value = e.value.trim();
+        value = Number(value.replaceAll(',', ''));
+        if (isNaN(value)) {
+            e.value = 0;
+        } else {
+            e.value = value.toLocaleString('ko-KR');
+        }
+
+    }
+
+    function saveMember() {
+        let memberName = document.querySelector("#name").value;
+        let memberGrade = document.querySelector("#grade").value;
+        let memberYear = document.querySelector("#year").value;
+        let memberJob = document.querySelector("#job").value;
+        let memberRank = document.querySelector("#rank").value;
+        let memberDepart = document.querySelector("#depart").value;
+        if (memberDepart == '') {
+            memberDepart = -1;
+        }
+        let memberTeam = document.querySelector("#team").value;
+        if (memberTeam == '') {
+            memberTeam = -1;
+        }
+        let memberPart = document.querySelector("#part").value;
+        if (memberPart == '') {
+            memberPart = -1;
+        }
+        let memberSalary = document.querySelector("#salary").value.replaceAll(',', '');
+
+        if (!validateForm()) {
+            return;
+        }
+
+        fetch("/member", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: memberName,
+                grade: memberGrade,
+                year: memberYear,
+                job: memberJob,
+                rank: memberRank,
+                depart: memberDepart,
+                team: memberTeam,
+                part: memberPart,
+                salary: memberSalary
+            })
+        })
+            .then((response) => {
+                alert("등록되었습니다.");
+                modal.style.display = 'none';
+            })
+    }
+
+    function cancelBtn() {
+        modal.style.display = "none";
+    }
+
+    function validateForm() {
+
+        // 이름 유효성 검사
+        let memberName = document.querySelector("#name");
+        if (!validateInput(memberName, "이름")) {
+            return false;
+        }
+
+        // 기술등급 유효성 검사
+        let memberGrade = document.querySelector("#grade");
+        if (!validateInput(memberGrade, "기술등급")) {
+            return false;
+        }
+
+        // 연차 유효성 검사
+        let memberYear = document.querySelector("#year");
+        if (!validateInput(memberYear, "연차")) {
+            return false;
+        }
+
+        // 직무 유효성 검사
+        let memberJob = document.querySelector("#job");
+        if (!validateInput(memberJob, "직무")) {
+            return false;
+        }
+
+        // 직급 유효성 검사
+        let memberRank = document.querySelector("#rank");
+        if (!validateInput(memberRank, "직급")) {
+            return false;
+        }
+
+        // 부서 유효성 검사
+        let memberDepart = document.querySelector("#depart");
+        if (!validateInput(memberDepart, "부서")) {
+            return false;
+        }
+
+        // 팀 유효성 검사
+        // let memberTeam = document.querySelector("#team");
+        // console.log(document.querySelector("#team").value)
+        // if (!validateInput(memberTeam, "팀")) {
+        //     return false;
+        // }
+
+        // 파트 유효성 검사
+        // let memberPart = document.querySelector("#part");
+        // if (!validateInput(memberPart, "파트")) {
+        //     return false;
+        // }
+
+        // 연봉 유효성 검사
+        let memberSalary = document.querySelector("#salary");
+        if (!validateNumber(memberSalary, "연봉") || !validateInput(memberSalary, "연봉")) {
+            return false;
+        }
+
+        // TODO 이름 중복 검사
+
+        return true;
+    }
+
+    function validateInput(inputElement, type) {
+        var value = inputElement.value.trim().replaceAll(',', '');
+        if (value === "" || value == 0 || value == -1 || value == "선택") {
+            inputElement.style.borderColor = "red";
+            alert("'" + type + "'" + " 입력해주세요.");
+            inputElement.focus();
+            return false;
+        }
+        inputElement.style.borderColor = "";
+        return true;
+    }
+
+    function validateNumber(inputElement, type) {
+        var value = inputElement.value.trim().replaceAll(',', '');
+        if (isNaN(value)) {
+            alert("'" + type + "'" + " 숫자를 입력해주세요.");
+            inputElement.style.borderColor = "red";
+            inputElement.value = ""; // 입력값 비우기
+            inputElement.focus();
+            return false;
+        }
+        inputElement.style.borderColor = "";
+        return true;
+    }
+
+
+    async function changeInfo(e) {
+
+        let result = await getChildDepartment(e.value);
+
+        if (e.name == 'team') {
+            let selectElements = document.querySelectorAll('.select-part');
+            selectElements.forEach((select) => {
+                select.options.length = 0;
+            })
+        }
+
+        let SelectElements = document.querySelectorAll('.select-' + e.name);
+        SelectElements.forEach((select) => {
+            select.options.length = 0;
+            let idx = 0;
+            if (result.childList.length > 0) {
+                result.childList.forEach((element) => {
+                    if (idx++ == 0) {
+                        let option = document.createElement('option');
+                        option.value = -1;
+                        option.text = '선택';
+                        select.appendChild(option);
+                    }
+                    option = document.createElement('option');
+                    option.value = element.seq;
+                    option.text = element.name;
+                    select.appendChild(option);
+
+                })
+            }
+        })
+
+    }
+
+    async function getChildDepartment(selectedValue) {
+        let response = await fetch("/member/departmentInfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                departmentSeq: selectedValue
+            })
+        })
+        return response.json();
+    }
+
+
+    function isClickMember() {
+        if (memberSeq == null || memberSeq == '') {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    async function clickEdit() {
+
+        // 멤버 클릭하고 수정 누르는가?
+        // if (!isClickMember()) {
+        //     alert("멤버를 선택해주세요");
+        //     return;
+        // }
+
+        let editBtn = document.querySelector('.profile-edit-btn');
+        let saveBtn = document.querySelector('.profile-save-btn');
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'block';
+
+        let table = document.getElementById('infoTable');
+        let tds = table.getElementsByTagName('td');
+
+        let input = document.createElement('input');
+        input.value = tds[0].textContent;
+        input.id = 'nameInput'
+        tds[0].textContent = '';
+        tds[0].appendChild(input);
+
+        let departInfo = await getChildDepartment(-1);
+        let teamInfo, partInfo;
+        let checkUntil = 1;
+        if (tds[1].className.split(' ')[1]) {
+            teamInfo = await getChildDepartment(Number(tds[1].className.split(' ')[1]));
+            checkUntil++;
+        }
+
+        if (tds[2].className.split(' ')[1]) {
+            partInfo = await getChildDepartment(Number(tds[2].className.split(' ')[1]));
+            checkUntil++;
+        }
+
+
+        let order = ['', 'depart', 'team', 'part', ''];
+        let childListOrder = ['', departInfo, teamInfo, partInfo];
+
+        for (let i = 1; i <= 3; i++) {
+            let select = document.createElement('select');
+            select.className = 'select-' + order[i];
+            select.name = order[i + 1];
+            select.id = order[i] + "Input";
+            select.onchange = function () {
+                changeInfo(this);
+            };
+
+
+            let currentValue = tds[i].textContent;
+            if (checkUntil >= i && childListOrder[i].childList.length > 0) {
+
+                // 조직정보에 팀이나, 파트가 있음에도 최종 파트까지 배정되지 못한 사람들 처리
+                let check = false;
+                if (i >= 2) {
+                    if (tds[i - 1].className.split(' ')[1] && !tds[i].className.split(' ')[1]) {
+                        let option = document.createElement('option');
+                        option.value = -1;
+                        option.text = '선택';
+                        check = true;
+                        select.appendChild(option);
+                    }
+                }
+
+                childListOrder[i].childList.forEach((element) => {
+                    let option = document.createElement('option');
+                    option.value = element.seq;
+                    option.text = element.name;
+                    if (!check && element.name == currentValue) {
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                });
+            }
+            tds[i].textContent = '';
+            tds[i].appendChild(select);
+        }
+
+        isClickEdit = true;
+    }
+
+
+    function clickSave() {
+
+        // 수정 클릭하고 저장 누르는가?
+        // if (!isClickEdit) {
+        //     alert("수정 버튼을 누르고 진행해주세요.");
+        //     return;
+        // }
+
+        let editBtn = document.querySelector('.profile-edit-btn');
+        let saveBtn = document.querySelector('.profile-save-btn');
+        editBtn.style.display = 'block';
+        saveBtn.style.display = 'none';
+
+        let table = document.getElementById('infoTable');
+
+        let memberNameElement = table.querySelector('#nameInput');
+        let memberDepartElement = table.querySelector('#departInput');
+        let memberTeamElement = table.querySelector('#teamInput');
+        let memberPartElement = table.querySelector('#partInput');
+
+        let td = memberNameElement.parentNode;
+        td.textContent = memberNameElement.value;
+
+        if (memberDepartElement.value !== null && memberDepartElement.value !== undefined && memberDepartElement.value !== '') {
+            td = memberDepartElement.parentNode;
+            td.textContent = memberDepartElement.options[memberDepartElement.selectedIndex].text;
+        }
+
+        if (memberTeamElement.value !== null && memberTeamElement.value !== undefined && memberTeamElement.value !== '') {
+            td = memberTeamElement.parentNode;
+            td.textContent = memberTeamElement.options[memberTeamElement.selectedIndex].text;
+        }
+
+        if (memberPartElement.value !== null && memberPartElement.value !== undefined && memberPartElement.value !== '') {
+            td = memberPartElement.parentNode;
+            td.textContent = memberPartElement.options[memberPartElement.selectedIndex].text;
+        }
+
+        fetch("/member/updateInfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                memberSeq: memberSeq,
+                memberName: memberNameElement.value,
+                departmentSeq: memberDepartElement.value == 0 ? -1 : memberDepartElement.value,
+                teamSeq: memberTeamElement.value == 0 ? -1 : memberTeamElement.value,
+                partSeq: memberPartElement.value == 0 ? -1 : memberPartElement.value,
+            })
+        }).then((response) => {
+            alert("수정되었습니다.");
+            clickMember(memberSeq);
+        })
+
+        isClickEdit = false;
+    }
+
+    const departElement = document.querySelectorAll(".depart");
+    departElement.forEach((element) => {
+        element.addEventListener("click", searchMember);
+    })
+
+    function searchMember() {
+
+        $.ajax({
+            url: '/department/members',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                departmentSeq: $(this).attr('id')
+            },
+            success: function (result) {
+                updateTable(result);
+            },
+            error: function (request, status, error) {
+
+            }
+        })
+    }
+
+    function updateTable(members) {
+        // 테이블의 tbody 요소를 찾습니다.
+        var tbody = $('#membersTable tbody');
+        // 이전 데이터를 지웁니다.
+        tbody.empty();
+
+        members.forEach(function (member) {
+            // 새로운 데이터를 추가합니다.
+            var row = `<tr onclick="clickMember(\${member.memberSeq})" style="cursor : pointer">
+                <td class="rank">\${member.rank}</td>
+                <td class="name">\${member.name}</td>
+                </tr>`;
+
+            tbody.append(row);
+        });
+    }
+
+
+    function clickMember(seq) {
+        memberSeq = seq;
+        console.log(seq);
+        $.ajax({
+            url: '/member/info',
+            method: "POST",
+            async: false,
+            data: {
+                memberSeq: seq
+            },
+            success: function (result) {
+                updateMemberInfo(result);
+            },
+            error: function (request, status, error) {
+                console.log(error);
+            }
+        })
+    }
+
+    function updateMemberInfo(memberInfo) {
+        let memberNameElement = document.querySelector(".memberName");
+        memberNameElement.textContent = memberInfo.name;
+
+        departSize = memberInfo.departmentList.length;
+
+        let memberDepartElement = document.querySelector(".memberDepart");
+        if (departSize >= 1) {
+            memberDepartElement.textContent = memberInfo.departmentList[0].NAME;
+            memberDepartElement.className = "memberDepart " + memberInfo.departmentList[0].DEPARTMENT_SEQ;
+        } else {
+            memberDepartElement.textContent = "";
+            memberDepartElement.className = "memberDepart";
+        }
+
+        let memberTeamElement = document.querySelector(".memberTeam");
+        if (departSize >= 2) {
+            memberTeamElement.textContent = memberInfo.departmentList[1].NAME;
+            memberTeamElement.className = "memberTeam " + memberInfo.departmentList[1].DEPARTMENT_SEQ;
+        } else {
+            memberTeamElement.textContent = "";
+            memberTeamElement.className = "memberTeam"
+        }
+
+        let memberPartElement = document.querySelector(".memberPart");
+        if (departSize >= 3) {
+            memberPartElement.textContent = memberInfo.departmentList[2].NAME;
+            memberPartElement.className = "memberPart " + memberInfo.departmentList[2].DEPARTMENT_SEQ;
+        } else {
+            memberPartElement.textContent = "";
+            memberPartElement.className = "memberPart"
+        }
+
+    }
+
+    const accordion = document.querySelector(".org-accordion");
+
+    const titles = accordion.querySelectorAll(".title");
+    titles.forEach((titleElement) => {
+        titleElement.addEventListener("click", toggleAccordion);
+    });
+
+    function toggleAccordion() {
+        const clickedItem = this.parentNode;
+        let items = accordion.querySelectorAll("li");
+
+        items.forEach((item) => {
+            if (clickedItem === item) {
+                item.classList.toggle("on");
+            } else {
+                item.classList.remove("on");
+            }
+        });
+    }
+
+    const modal = document.getElementById("modalWrap"); // 모달 창 요소 가져오기
+
+    function modalOpen(e) {
+        checkTarget = e;
+        modal.style.display = "block";
+    };
+
+    const closeBtn = document.getElementById("closeBtn"); // 모달을 닫는 버튼(X) 요소 가져오기
+
+    closeBtn.onclick = function () {
+        modal.style.display = "none"; // 모달을 닫는 버튼(X)을 클릭하면 모달을 숨김
+    };
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none"; // 모달 외부를 클릭하면 모달을 숨김
+        }
+    };
+
+</script>
+</body>
+</html>

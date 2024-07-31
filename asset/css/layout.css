@@ -32,7 +32,7 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .scroll-none { overflow: hidden; } 
 
 /*========== Header ==========*/
-.header-top { display: flex; justify-content: flex-end; align-items: center; width: calc(100% - 216px); height: 56px; padding: 20px; background-color: #fff; margin-left: auto; gap: 20px; box-shadow: 5px 5px 20px rgba(0 , 0, 0, 0.1); transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
+.header-top { display: flex; justify-content: flex-end; align-items: center; width: calc(100% - 216px); height: 56px; padding: 20px; background-color: #fff; margin-left: auto; gap: 20px; transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
 .header-top.on { width: calc(100% - 56px); }
 .header-top .header-profile span { color: var(--dark-blue); font-variation-settings: 'wght' 600; } 
 .header-top .logout-btn span { margin-left: 4px; } 
@@ -45,8 +45,7 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .header-left .logo-wrap .nav-btn .fa-bars { display: none; }
 .nav { display: flex; flex-direction: column; width: 100%; } 
 .nav .menu-list { transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; }
-.nav .menu-list.active { background-color: #3C3D79; } 
-.nav .menu-list:hover { background-color: #3C3D79; }
+.nav .menu-list.active, .nav .menu-list:hover { background-color: var(--hover-blue); } 
 .nav .menu-list a { overflow: hidden; max-height: 50px; padding: 15px; color: #fff;  } 
 .nav .menu-list a span { margin-left: 10px; opacity: 1; transition: opacity 0.5s ease, visibility 0s ease 0.5s; -webkit-transition: opacity 0.5s ease, visibility 0s ease 0.5s; -moz-transition: opacity 0.5s ease, visibility 0s ease 0.5s; -ms-transition: opacity 0.5s ease, visibility 0s ease 0.5s; -o-transition: opacity 0.5s ease, visibility 0s ease 0.5s; }
 .header-left.on .nav .menu-list a span { visibility: hidden; opacity: 0; transition: opacity 0.5s ease, visibility 0s ease; -webkit-transition: opacity 0.5s ease, visibility 0s ease; -moz-transition: opacity 0.5s ease, visibility 0s ease; -ms-transition: opacity 0.5s ease, visibility 0s ease; -o-transition: opacity 0.5s ease, visibility 0s ease; } 
@@ -65,4 +64,4 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .login-form-area .login-form-wrap { display: flex; flex-direction: column; gap: 10px; margin: 0 0 20px; } 
 .login-form-area .id-save-wrap { margin-bottom: 20px; } 
 .login-form-area .btn-wrap { display: flex; gap: 10px; } 
-.login-form-area .btn-wrap .login-btn { flex: 1 } 
+.login-form-area .btn-wrap .login-btn { flex: 1; cursor: pointer; } 

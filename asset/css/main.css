@@ -1,20 +1,11 @@
 .cont-tit { font-size: 20px; font-variation-settings: 'wght' 600; } 
 .cont-tit::after { display: block; width: 100%; height: 1px; margin-top: 10px; background-color: var(--dark-gray); content: ''; } 
-.cont-tit .name { font-variation-settings: 'wght' 700; color: var(--dark-blue);}
-
+.cont-tit .name { font-variation-settings: 'wght' 700; color: var(--dark-blue); } 
 .main-wrap { display: flex; align-items: center; } 
-
-.profile-area { display: flex; flex-direction: column; align-items: center; width: 30%; gap: 20px; } 
-.profile-area .profile-image { width: 150px; height: 150px; } 
-.profile-area .profile-image img { width: 100%; height: 100%; border-radius: 50%; } 
-.profile-area .profile-info { display: flex; flex-direction: column; align-items: center; gap: 10px; } 
-.profile-area .profile-info table { font-size: 15px; white-space: nowrap;}
-.profile-area .profile-info tr { border-top: 1px solid var(--dark-gray); border-bottom: 1px solid var(--dark-gray); }
-.profile-area .profile-info th { padding: 4px 20px; background-color: var(--light-gray); font-variation-settings: 'wght' 600; }
-.profile-area .profile-info td { padding: 4px 20px; border-left: 1px solid var(--dark-gray); }
-
-.chart-area { margin: 0 auto; } 
-.chart-area .project-btn-wrap { display: flex; justify-content: space-between; margin: 10px 10px 30px 20px; } 
+.left-area { display: flex; justify-content: center; width: 30%; } 
+.right-area { width: 70%; padding: 20px 0 30px; } 
+.chart-area { display: flex; flex-direction: column; align-items: center; }
+.chart-area .project-btn-wrap { display: flex; gap: 10px; padding-bottom: 20px;; } 
 .chart-area .project-btn-wrap button { background-color: var(--dark-gray); box-shadow: 2px 5px 10px rgba(193, 204, 215, 0.3); } 
 .chart-area .project-btn-wrap button.active { background-color: var(--main-blue); box-shadow: 2px 5px 10px rgba(103, 114, 229, 0.3); } 
 .chart-area .project-btn-wrap button:hover { box-shadow: 5px 5px 15px rgba(193, 204, 215, 0.5); } 
@@ -22,6 +13,6 @@
 .chart-area .chart-wrap { width: 500px; height: 500px; } 
 .chart-area .chart-wrap.chart2 { display: none; } 
 .chart-area .chart-wrap.chart3 { display: none; } 
-.chart-area .chart-btn-wrap { display: flex; justify-content: flex-end; margin: 10px 10px 30px 20px; gap: 4px; }
+.chart-area .chart-btn-wrap { display: flex; justify-content: flex-end; padding-top: 20px; gap: 4px; } 
 .chart-area .chart-btn-wrap .chart-btn { min-width: 22.4px; padding: 2px; border-radius: 2px; background-color: #fff; color: var(--main-blue); box-shadow: 2px 2px 5px rgba(103, 114, 229, 0.3); -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; } 
 .chart-area .chart-btn-wrap .chart-btn.active { background-color: var(--main-blue); color: #fff; } 

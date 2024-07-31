@@ -18,7 +18,7 @@ button { color: #333; border: 0; margin: 0; padding: 0; vertical-align: baseline
 input,
 textarea,
 button { appearance: none; -moz-appearance: none; -webkit-appearance: none; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; color: #333; } 
-select { /*ios대응*/ -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("../../asset/images/common/select-arrow-g.svg"); background-repeat: no-repeat; background-position: calc(100% - 12px) 50%; background-color: #fff; background-size: 10px; color: #333; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; } 
+select { /*ios대응*/ -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("../../asset/images/common/select-arrow-g.svg"); background-repeat: no-repeat; background-position: calc(100% - 8px) 50%; background-color: #fff; background-size: 10px; color: #333; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; } 
 select::-ms-expand { display: none; } 
 #wrap { position: relative; width: 100%; overflow: hidden; margin: 0 auto; } 
 img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; } 

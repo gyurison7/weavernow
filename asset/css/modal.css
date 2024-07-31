@@ -1,0 +1,43 @@
+#modalWrap { display: none; position: fixed; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); } 
+#modalBody { position: fixed; top: 50%; left: 50%; overflow: auto; width: 800px; height: 800px; padding: 30px; border-radius: 8px; background-color: #fff; transform: translate(-50%, -50%); }
+#modalBody::-webkit-scrollbar { width: 8px; } 
+#modalBody::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 8px; } 
+#modalBody::-webkit-scrollbar-thumb { background: var(--dark-gray); border-radius: 8px;  }  
+#closeBtn { position: absolute; top: 16px; right: 16px; } 
+#modalTitle { font-size: 24px; } 
+
+.container { display: flex; padding-top: 30px; } 
+.org-accordion { width: 250px; background-color: var(--main-blue); font-size: 15px; color: #fff; } 
+.org-accordion .nav li { position: relative; overflow: hidden; max-height: 50px; } 
+.org-accordion .nav li:first-child { padding: 15px; } 
+.org-accordion .nav li.on { max-height: 600px; } 
+.org-accordion .nav li::after { display: block; position: absolute; left: 50%; bottom: 0; width: 90%; height: 1px; background-color: #8f97e5; content: ''; transform: translateX(-50%); } 
+.org-accordion .nav .org-list a { padding: 15px 25px; color: #fff; transition: background-color 0.3s; } 
+.org-accordion .nav .org-list .next-title { padding-left: 40px; background-color: var(--main-blue); } 
+.org-accordion .nav .org-list .part { padding-left: 55px; background-color: var(--light-blue); } 
+.org-accordion .nav .org-list.on .title { background-color: var(--hover-blue); } 
+.org-accordion .nav .org-list:hover .title, 
+.org-accordion .nav .org-list .next-title:hover, 
+.org-accordion .nav .org-list .part:hover { background-color: var(--hover-blue); } 
+
+.main-content { flex: 1; font-size: 15px; } 
+.main-content #membersTable { width: 100%; } 
+.main-content #membersTable thead { display: block; width: 100%; } 
+.main-content #membersTable tbody { display: block; width: 100%; height: 700px; overflow: auto; } 
+#modalWrap .main-content #membersTable tbody { height: 577px; } 
+.main-content #membersTable tr { display: table; width: 100%; table-layout: fixed; cursor: pointer; } 
+.main-content #membersTable th { background-color: var(--light-gray); } 
+.main-content #membersTable th, .main-content #membersTable td { width: 50%; padding: 8px; border-top: 1px solid var(--border-gray); text-align: center; } 
+.main-content #membersTable tbody::-webkit-scrollbar { width: 8px; } 
+.main-content #membersTable tbody::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 8px; } 
+.main-content #membersTable tbody::-webkit-scrollbar-thumb { background: var(--dark-gray); border-radius: 8px; } 
+
+.selected-members { position: relative; height: 300px; margin-top: 30px; padding: 20px; border-radius: 8px; background-color: var(--light-gray); } 
+#memberTitle { font-size: 18px; } 
+.selected-member-list { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 15px; font-size: 14px; } 
+.selected-member-list .member-item { border-radius: 16px; border: 1px solid var(--border-gray); background-color: #fff; } 
+.selected-member-list .member-item .member-name { } 
+.selected-member-list .member-item .delete-btn { display: flex; justify-content: center; align-items: center; padding: 4px 8px 4px 12px; } 
+.selected-member-list .member-item .delete-btn img { width: 20px; height: 20px; } 
+.no-member { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 14px; color: #7f8992;}
+.select-member-btn { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); } 
