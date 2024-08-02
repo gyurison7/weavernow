@@ -1,0 +1,851 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <link rel="stylesheet" href="../asset/css/jquery-ui.min.css">
+        <link rel="stylesheet" href="../asset/css/datepicker.css">
+        <link rel="stylesheet" href="../asset/css/modal.css">
+        <link rel="stylesheet" href="../asset/css/department.css">
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/jquery-ui.min.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+
+<body>
+<div id="wrap">
+    <div class="page-wrap">
+        <!-- <%@include file="../include/header.jsp" %> -->
+         <!--========== HEADER ==========-->
+         <div class="header-wrap"></div>
+         <script>
+             $(function () {
+                 $(".header-wrap").load("include/header.html", function () {
+                     // 로드된 후에 실행될 코드
+                     $.getScript("../asset/js/header.js");
+                 });
+             });
+         </script>
+        <!--========== CONTENTS ==========-->
+        <main class="main">
+            <section class="section">
+                <div class="inner">
+                <div class="title-area">
+                    <h2 class="section-tit">프로젝트 수정</h2>
+                </div>
+                <div class="contents">
+                        <div class="reg-form-area">
+                            <div class="reg-form-wrap" id="form-wrap">
+                                <div class="input-box-wrap">
+                                    <div class="input-box">
+                                        <label for="project-name">프로젝트명</label>
+                                        <input type="text" name="projectName" id="project-name"
+                                               value="${editProjectInfo.projectName}">
+                                    </div>
+                                </div>
+                                <div class="input-box-wrap">
+                                    <div class="input-box">
+                                        <label for="datepicker-from">시작일자</label>
+                                        <input type="text" name="startDate" id="datepicker-from"
+                                               value="${editProjectInfo.startDate}">
+                                    </div>
+                                    <div class="input-box">
+                                        <label for="datepicker-to">종료일자</label>
+                                        <input type="text" name="endDate" id="datepicker-to"
+                                               value="${editProjectInfo.endDate}">
+                                    </div>
+                                </div>
+
+                                <c:forEach items="${editProjectInfo.memberList}" var="member"
+                                           varStatus="status">
+                                    <c:if test="${member.seq eq editProjectInfo.pmSeq}">
+                                        <div class="input-box-wrap">
+                                            <div class="input-box pm">
+                                                <label for="pm">PM</label>
+                                                <input type="text" id="pm"
+                                                       name="${editProjectInfo.pmSeq}"
+                                                       class="${member.seq}"
+                                                       onmouseup="modalOpen(this)"
+                                                       value="${member.name}">
+                                                <select name="select-job" id="pmJob" disabled>
+                                                    <option>${member.job}</option>
+                                                    <option value="IT기획자">IT기획자</option>
+                                                    <option value="IT컨설턴트">IT컨설턴트</option>
+                                                    <option value="업무분석가">업무분석가</option>
+                                                    <option value="데이터분석가">데이터분석가</option>
+                                                    <option value="IT PM">IT PM</option>
+                                                    <option value="IT아키텍트">IT아키텍트</option>
+                                                    <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                                    <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                                    <option value="응용SW개발자">응용SW개발자</option>
+                                                    <option value="시스템SW개발자">시스템SW개발자</option>
+                                                    <option value="정보시스템운용자">정보시스템운용자</option>
+                                                    <option value="IT지원기술자">IT지원기술자</option>
+                                                    <option value="IT마케터">IT마케터</option>
+                                                    <option value="IT품질관리자">IT품질관리자</option>
+                                                    <option value="IT테스터">IT테스터</option>
+                                                    <option value="IT감리">IT감리</option>
+                                                    <option value="정보보안전문가">정보보안전문가</option>
+                                                </select>
+                                                <select name="member-list" class="member-list" id="pm-list"
+                                                        size="10"
+                                                        style="display: none;"></select>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
+
+
+                                <c:set var="check" value="0"></c:set>
+                                <c:forEach items="${editProjectInfo.memberList}" var="member"
+                                           varStatus="status">
+                                    <c:if test="${member.seq ne editProjectInfo.pmSeq}">
+                                        <div id="memberBox${check}" class="input-box-wrap">
+                                            <div class="input-box member">
+                                                <label for="member">
+                                                    <c:if test="${check eq 0}">멤버</c:if>
+                                                </label>
+
+                                                <div class="member-wrap">
+                                                    <div class="add-member-wrap">
+                                                        <input type="text" class="memberName memberName${member.seq}"
+                                                               name="${member.seq}" id="member"
+                                                               value="${member.name}"
+                                                               onmouseup="modalOpen(this)" disabled>
+                                                        <select name="select-job" class="memberJob" id="select-job">
+                                                            <option>${member.job}</option>
+                                                            <option value="IT기획자">IT기획자</option>
+                                                            <option value="IT컨설턴트">IT컨설턴트</option>
+                                                            <option value="업무분석가">업무분석가</option>
+                                                            <option value="데이터분석가">데이터분석가</option>
+                                                        <%--                                                    <option value="IT PM">IT PM</option>--%>
+                                                            <option value="IT아키텍트">IT아키텍트</option>
+                                                            <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                                            <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                                            <option value="응용SW개발자">응용SW개발자</option>
+                                                            <option value="시스템SW개발자">시스템SW개발자</option>
+                                                            <option value="정보시스템운용자">정보시스템운용자</option>
+                                                            <option value="IT지원기술자">IT지원기술자</option>
+                                                            <option value="IT마케터">IT마케터</option>
+                                                            <option value="IT품질관리자">IT품질관리자</option>
+                                                            <option value="IT테스터">IT테스터</option>
+                                                            <option value="IT감리">IT감리</option>
+                                                            <option value="정보보안전문가">정보보안전문가</option>
+                                                        </select>
+                                                        <button class="common-btn border-btn small-btn add-member" onclick="modalOpen('member', this)">추가</button>
+                                                    </div>
+                                                    <div class="add-member-wrap">
+                                                        <input type="text" class="memberName memberName${member.seq}"
+                                                               name="${member.seq}" id="member"
+                                                               value="${member.name}"
+                                                               onmouseup="modalOpen(this)" disabled>
+                                                        <select name="select-job" class="memberJob" id="select-job">
+                                                            <option>${member.job}</option>
+                                                            <option value="IT기획자">IT기획자</option>
+                                                            <option value="IT컨설턴트">IT컨설턴트</option>
+                                                            <option value="업무분석가">업무분석가</option>
+                                                            <option value="데이터분석가">데이터분석가</option>
+                                                        <%--                                                    <option value="IT PM">IT PM</option>--%>
+                                                            <option value="IT아키텍트">IT아키텍트</option>
+                                                            <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                                            <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                                            <option value="응용SW개발자">응용SW개발자</option>
+                                                            <option value="시스템SW개발자">시스템SW개발자</option>
+                                                            <option value="정보시스템운용자">정보시스템운용자</option>
+                                                            <option value="IT지원기술자">IT지원기술자</option>
+                                                            <option value="IT마케터">IT마케터</option>
+                                                            <option value="IT품질관리자">IT품질관리자</option>
+                                                            <option value="IT테스터">IT테스터</option>
+                                                            <option value="IT감리">IT감리</option>
+                                                            <option value="정보보안전문가">정보보안전문가</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <select name="member-list" class="member-list" id="member-list"
+                                                        size="30"
+                                                        style="display: none;"></select>
+                                            </div>
+                                        </div>
+                                        <c:set var="check" value="${check+1}"></c:set>
+                                    </c:if>
+                                </c:forEach>
+
+                                <div id="input-box-weight" class="input-box-wrap">
+                                    <div class="input-box">
+                                        <label for="cost-weight">노임단가 가중치</label>
+                                        <input type="number" name="wageWeight1" id="cost-weight"
+                                               placeholder="재경비 가중치" value="${editProjectInfo.wageWeight1}">
+                                        <input type="number" name="wageWeight2" id="tech-weight"
+                                               placeholder="기술비 가중치" value="${editProjectInfo.wageWeight2}">
+                                    </div>
+                                </div>
+
+                                <div class="input-box-wrap">
+                                    <div class="input-box">
+                                        <label for="salary-weight">급여 가중치</label>
+                                        <input type="number" name="salaryWeight" id="salary-weight"
+                                               value="${editProjectInfo.salaryWeight}">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="btn-wrap">
+                                <a href="project-list.html" class="common-btn cancel-btn">취소</a>
+                                <button type="submit" class="common-btn" onclick="updateProjectClick()">저장</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="modalWrap"> <!-- 모달 창을 감싸는 div -->
+                    <div id="modalBody">
+                        <span id="closeBtn">&times;</span> <!-- 모달을 닫는 X 버튼 -->
+
+                        <div class="container org-accordion">
+                            <div class="sidebar">
+                                <ul class="nav">
+                                    <li>위버로프트 조직도</li>
+                                    <ul class="nav">
+                                        <li class="org-list">
+                                            <a id="1" class="title depart"><span>이사회</span></a>
+                                        </li>
+
+                                        <li class="org-list">
+                                            <a id="2" class="title depart"><span>경영지원팀</span></a>
+                                        </li>
+
+                                        <li class="org-list">
+                                            <a id="3" class="title depart"><span>전략기획본부</span></a>
+                                            <a id="6" class="next-title desc depart">&nbsp;&nbsp;사업기획팀</a>
+                                            <a id="7" class="next-title desc depart">&nbsp;&nbsp;운영기획팀</a>
+                                        </li>
+
+                                        <li class="org-list">
+                                            <a id="4" class="title depart"><span>디자인본부</span></a>
+                                            <a id="8" class="next-title desc depart">&nbsp;&nbsp;디자인팀</a>
+
+                                            <a id="9" class="next-title desc depart">
+                                                &nbsp;&nbsp;UX팀
+                                            </a>
+                                            <a id="10" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트1
+                                            </a>
+                                            <a id="11" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트2
+                                            </a>
+                                        </li>
+
+                                        <li class="org-list">
+                                            <a id="5" class="title depart"><span>개발본부</span></a>
+
+                                            <a id="12" class="next-title desc depart">
+                                                웹개발팀
+                                            </a>
+                                            <a id="14" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트1
+                                            </a>
+                                            <a id="15" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트2
+                                            </a>
+
+                                            <a id="13" class="next-title desc depart">
+                                                커머스개발팀
+                                            </a>
+                                            <a id="18" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트1
+                                            </a>
+                                            <a id="19" class="desc depart">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파트2
+                                            </a>
+
+                                            <a id="16" class="next-title desc depart">인프라팀</a>
+                                            <a id="17" class="next-title desc depart">SI사업팀</a>
+                                        </li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <div class="main-content">
+                                <table id="membersTable">
+                                    <thead>
+                                    <tr>
+                                        <th>직급</th>
+                                        <th>이름</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!--========== FOOTER ==========-->
+        <footer id="footer"></footer>
+        <script>
+            $(function () {
+                $("#footer").load("include/footer.html", function () {
+                    // 로드된 후에 실행될 코드
+                    $.getScript("../asset/js/basic.js");
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("modalWrap");
+    let checkType;
+    let projectMemberList = [];
+
+    // $(document).ready(function () {
+
+    //     <c:forEach items="${editProjectInfo.memberList}" var="member">
+
+    //         var memberSeq = '${member.seq}';
+    //         var memberName = '${member.name}';
+
+    //         projectMemberList.push({
+    //             memberSeq: memberSeq,
+    //             memberName: memberName
+    //         })
+
+
+    //         // 아래 장바구니 요소 찾아서 추가
+    //         var memberList = $(".selected-member-list");
+    //         memberList.append(
+    //             `<li class="member-item">
+    //                         <button class="delete-btn">
+    //                             <span class="member-name \${memberSeq}">\${memberName}</span>
+    //                              <img src="/resources/img/common/btn-close.svg" alt="">
+    //                          </button>
+    //                     </li>
+    //                     `);
+    //     </c:forEach>
+
+    //     <%--console.log(${editProjectInfo.startDate});--%>
+    //     var minDate = new Date(${editProjectInfo.startDate});
+    //     console.log(minDate)
+    //     minDate.setDate(minDate.getDate() + 1);
+    //     $("#datepicker-to").datepicker("option", "minDate", minDate);
+
+    // })
+
+    // 장바구니에 추가된 멤버 삭제버튼
+    $(document).on("click", ".delete-btn", function () {
+
+        // 삭제할 memberSeq
+        let deleteMemberSeq = $(this).parent().find('.member-name').get(0).className.split(' ')[1];
+
+        // projectMemberList에서 해당 memberSeq 삭제
+        projectMemberList = projectMemberList.filter((e) => e.memberSeq != deleteMemberSeq);
+
+        // 장바구니에서 제거
+        $(this).closest('.member-item').remove();
+
+    });
+
+
+    function clickMember(e) {
+        let memberName = e.querySelector(".name").textContent;
+        let memberSeq = e.querySelector(".memberSeq").textContent;
+        modal.style.display = "none";
+
+        checkTarget.value = memberName;
+        checkTarget.name = memberSeq;
+    }
+
+    function selectMember(e, memberSeq) {
+
+        if (document.getElementById("pm").name == memberSeq) {
+            alert("PM으로 설정된 인원입니다.");
+            return;
+        }
+        if (projectMemberList.some(member => member.memberSeq == memberSeq)) {
+            alert("멤버로 설정된 인원입니다.");
+            return;
+        }
+
+        if (checkType == 'pm') { // pm 검색을 통해 들어왔다면, 클릭하면 바로 입력창에 적용
+
+            let memberName = e.querySelector(".name").textContent;
+            let seq = memberSeq;
+            let memberRank = e.querySelector(".rank").textContent;
+
+            // 클릭되면 모달 창을 닫는다.
+            modal.style.display = "none";
+            // 클릭한 사람의 name과 seq
+            let pmElement = document.getElementById("pm")
+            pmElement.value = memberName;
+            pmElement.name = seq;
+
+        } else if (checkType == 'member') { // member 검색을 통해 들어왔다면, 안나가고 projectMemberList에 추가해서 계속 쇼핑
+
+            let memberName = e.querySelector(".name").textContent;
+
+            // 프로젝트 멤버 리스트에 추가
+            projectMemberList.push({
+                memberSeq: memberSeq,
+                memberName: memberName
+            });
+
+            // 아래 장바구니 요소 찾아서 추가
+            let memberList = $(".selected-member-list");
+            memberList.append(
+                `<li class="member-item">
+                        <button class="delete-btn">
+                            <span class="member-name \${memberSeq}">\${memberName}</span>
+                             <img src="/resources/img/common/btn-close.svg" alt="">
+                         </button>
+                    </li>
+                    `);
+
+        }
+
+        checkNoMember();
+    }
+
+    function memberSave() {
+
+        // 기존에 추가된 row 모두 삭제
+        if (projectMemberList.length > 0) {
+            let memberWrap = document.querySelector(".member-wrap");
+            while (memberWrap.firstChild) {
+                memberWrap.firstChild.remove();
+            }
+        }
+
+        // 선택된 프로젝트 멤버 처리
+        projectMemberList.forEach((element) => {
+            var newMemberBox = document.createElement("div");
+            newMemberBox.className = "add-member-wrap projectMember";
+
+            let memberSeq = element.memberSeq;
+            let memberName = element.memberName;
+
+            newMemberBox.innerHTML = `
+                            <input class="memberName \${memberSeq}"
+                                   name="\${memberSeq}" id="member"
+                                   value="\${memberName}" disabled>
+                            <select name="select-job" class="memberJob" id="select-job">
+                                <option value="선택">선택</option>
+                                <option value="IT기획자">IT기획자</option>
+                                <option value="IT컨설턴트">IT컨설턴트</option>
+                                <option value="업무분석가">업무분석가</option>
+                                <option value="데이터분석가">데이터분석가</option>
+                                <option value="IT PM">IT PM</option>
+                                <option value="IT아키텍트">IT아키텍트</option>
+                                <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                <option value="응용SW개발자">응용SW개발자</option>
+                                <option value="시스템SW개발자">시스템SW개발자</option>
+                                <option value="정보시스템운용자">정보시스템운용자</option>
+                                <option value="IT지원기술자">IT지원기술자</option>
+                                <option value="IT마케터">IT마케터</option>
+                                <option value="IT품질관리자">IT품질관리자</option>
+                                <option value="IT테스터">IT테스터</option>
+                                <option value="IT감리">IT감리</option>
+                                <option value="정보보안전문가">정보보안전문가</option>
+                            </select>
+                    `
+
+            // 추가될 태그의 자식요소로 추가
+            document.querySelector(".member-wrap").appendChild(newMemberBox);
+        });
+
+        // 추가된 요소들의 첫번째에는 검색 버튼 추가
+        document.querySelectorAll(".add-member-wrap")[0].innerHTML += `<button class="common-btn border-btn small-btn add-member" onclick="modalOpen('member', this)">검색</button>`;
+
+        // 모달 버튼 닫기
+        modal.style.display = "none";
+    }
+
+    let checkTarget;
+
+    function modalOpen(type) {
+        checkType = type;
+        modal.style.display = "block";
+        checkNoMember();
+    };
+
+    function checkNoMember() {
+        let element = document.querySelector(".no-member");
+        if (projectMemberList.length > 0) {
+            element.style.display = "none";
+        } else {
+            element.style.display = "block";
+        }
+    }
+
+    const closeBtn = document.getElementById("closeBtn");
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+        let items = accordion.querySelectorAll("li");
+        items.forEach((item) => {
+            item.classList.remove("on");
+        });
+    };
+
+    const accordion = document.querySelector(".org-accordion");
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            let items = accordion.querySelectorAll("li");
+            items.forEach((item) => {
+                item.classList.remove("on");
+            });
+
+            var tbody = $('#membersTable tbody');
+            tbody.empty();
+        }
+    };
+    const titles = accordion.querySelectorAll(".title");
+    titles.forEach((titleElement) => {
+        titleElement.addEventListener("click", toggleAccordion);
+    });
+
+    function toggleAccordion() {
+        const clickedItem = this.parentNode;
+        let items = accordion.querySelectorAll("li");
+
+        items.forEach((item) => {
+            if (clickedItem === item) {
+                item.classList.toggle("on");
+            } else {
+                item.classList.remove("on");
+            }
+        });
+    }
+
+    const departElement = document.querySelectorAll(".depart");
+    departElement.forEach((element) => {
+        element.addEventListener("click", searchMember);
+    })
+
+    function searchMember() {
+        console.log(this.innerText.trim());
+
+        $.ajax({
+            url: '/department/members',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                departmentSeq: $(this).attr('id')
+            },
+            success: function (result) {
+                updateTable(result);
+            },
+            error: function (request, status, error) {
+
+            }
+        })
+    }
+
+    function updateTable(members) {
+        // 테이블의 tbody 요소를 찾습니다.
+        var tbody = $('#membersTable tbody');
+        // 이전 데이터를 지웁니다.
+        tbody.empty();
+
+        members.forEach(function (member) {
+            // 새로운 데이터를 추가합니다.
+            var row = '<tr onclick="selectMember(this, ' + member.memberSeq + ')" style="cursor : pointer">' +
+                '<td class="rank">' + member.rank + '</td>' +
+                '<td class="name">' + member.name + '</td>' +
+                '</tr>';
+            tbody.append(row);
+        });
+    }
+
+    $(function () {
+        $("#datepicker-from").datepicker({
+            showOn: "both",
+            // buttonImage: "/resources/img/calender.svg",
+            buttonImageOnly: true,
+            buttonText: "선택",
+            changeYear: true,
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            dayNames: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
+            dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+            maxDate: "+5y",
+            minDate: "-5Y",
+            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            showMonthAfterYear: true,
+            showOtherMonths: true,
+            yearSuffix: "년",
+        });
+        $("#datepicker-to").datepicker({
+            showOn: "both",
+            // buttonImage: "../images/calender.svg",
+            buttonImageOnly: true,
+            buttonText: "선택",
+            changeYear: true,
+            changeMonth: true,
+            dateFormat: "yy-mm-dd",
+            dayNames: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
+            dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+            maxDate: "+5y",
+            minDate: "-5Y",
+            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            showMonthAfterYear: true,
+            showOtherMonths: true,
+            yearSuffix: "년",
+        });
+    });
+
+    function changeStartDate() {
+        var minDate = new Date($("#datepicker-from").datepicker("getDate"));
+        minDate.setDate(minDate.getDate() + 1);
+        $("#datepicker-to").datepicker("option", "minDate", minDate);
+    }
+
+
+    function search(e) {
+        var input = e.value.trim();
+
+        var memberList = e.parentElement.querySelector(".member-list");
+
+        memberList.style.display = "block";
+        memberList.innerHTML = "";
+
+        $.ajax({
+            url: '/member/search',
+            type: 'POST',
+            dataType: "json",
+            data: JSON.stringify({
+                keyword: input
+            }),
+            contentType: "application/json",
+            success: function (result) {
+
+                console.log(result);
+                var members = [];
+                $("#member-list option[value='option']").remove();
+                result.forEach(function (member) {
+                    members.push(member);
+                })
+
+                members.forEach(function (member) {
+                    var option = document.createElement("option");
+                    option.value = member.memberSeq;
+                    option.textContent = member.memberName;
+                    memberList.appendChild(option);
+                });
+
+                if (members.length === 0 || input == "") {
+                    memberList.style.display = "none";
+                }
+            },
+            error: function (request, status, error) {
+
+            },
+        });
+    }
+
+    function validateInput(inputElement, type) {
+        var value = inputElement.value.trim();
+        if (value === "" || value == 0) {
+            inputElement.style.borderColor = "red";
+            alert("'" + type + "'" + " 입력해주세요.");
+            inputElement.focus();
+            return false;
+        }
+        inputElement.style.borderColor = "";
+        return true;
+    }
+
+    function validateNumber(inputElement, type) {
+        var value = inputElement.value.trim();
+        if (isNaN(value)) {
+            alert("'" + type + "'" + " 숫자를 입력해주세요.");
+            inputElement.style.borderColor = "red";
+            inputElement.value = ""; // 입력값 비우기
+            inputElement.focus();
+            return false;
+        }
+        inputElement.style.borderColor = "";
+        return true;
+    }
+
+    function duplicateCheck(members) {
+        let memberSet = new Set();
+
+        for (let name of members) {
+            if (memberSet.has(name)) {
+                alert("중복된 인원이 있습니다.");
+                return true;
+            }
+            memberSet.add(name);
+        }
+        return false;
+    }
+
+    // 모든 입력 데이터의 유효성을 검사하는 함수
+    function validateForm() {
+
+        // 프로젝트명 유효성 검사
+        var projectName = document.getElementById("project-name");
+        if (!validateInput(projectName, "프로젝트명")) {
+            return false;
+        }
+
+        // 시작일자 유효성 검사
+        var startDate = document.getElementById("datepicker-from");
+        if (!validateInput(startDate, "시작일자")) {
+            return false;
+        }
+
+        // 종료일자 유효성 검사
+        var endDate = document.getElementById("datepicker-to");
+        if (!validateInput(endDate, "종료일자")) {
+            return false;
+        }
+
+        // 멤버 유효성 검사
+        var member = document.getElementById("member");
+        if (!validateInput(member, "멤버")) {
+            return false;
+        }
+
+        // PM 유효성 검사
+        var pm = document.getElementById("pm");
+        if (!validateInput(pm, "PM")) {
+            return false;
+        }
+
+        // 노임단가 가중치 유효성 검사
+        var costWeight = document.getElementById("cost-weight");
+        if (!validateNumber(costWeight, "재경비")) {
+            return false;
+        }
+        if (!validateInput(costWeight, "재경비")) {
+            return false;
+        }
+
+        // 기술비 가중치 유효성 검사
+        var techWeight = document.getElementById("tech-weight");
+        if (!validateNumber(techWeight, "기술비") || !validateInput(techWeight, "기술비")) {
+            return false;
+        }
+
+        // 급여 가중치 유효성 검사
+        var salaryWeight = document.getElementById("salary-weight");
+        if (!validateNumber(salaryWeight, "급여 가중치") || !validateInput(salaryWeight, "급여 가중치")) {
+            return false;
+        }
+
+        // 시작일자 종료일자 기간 체크
+        if (startDate.value.trim() > endDate.value.trim()) {
+            alert("종료일자가 시작일자보다 빠릅니다.")
+            return false;
+        }
+
+        // 멤버 중복 검사
+        let members = [];
+        let memberNameElements = document.querySelectorAll(".memberName");
+        memberNameElements.forEach(function (element) {
+            members.push(element.value);
+        });
+        if (duplicateCheck(members)) {
+            return false;
+        }
+
+        // 모든 입력 데이터가 유효할 경우 true 반환
+        return true;
+    }
+
+    function updateProjectClick() {
+
+        if (!validateForm()) {
+            return;
+        }
+
+        let elements = document.querySelectorAll('.projectMember');
+
+        let memberList = [];
+        elements.forEach(function (element) { // 프로젝트 멤버 리스트 추가
+            let member = {
+                memberSeq: element.querySelector('.memberName').name,
+                memberName: element.querySelector('.memberName').value,
+                memberJob: element.querySelector('.memberJob').value
+            };
+            memberList.push(member);
+        });
+
+        let pm = {
+            memberSeq: document.getElementById('pm').name,
+            memberName: document.getElementById('pm').value,
+            memberJob: 'IT PM'
+        };
+
+        let data = {
+            projectSeq: ${editProjectInfo.projectSeq},
+            projectName: document.getElementById('project-name').value,
+            startDate: document.getElementById('datepicker-from').value,
+            endDate: document.getElementById('datepicker-to').value,
+            memberList: memberList,
+            pm: pm,
+            wageWeight1: document.getElementById('cost-weight').value,
+            wageWeight2: document.getElementById('tech-weight').value,
+            salaryWeight: document.getElementById('salary-weight').value
+        };
+        $.ajax({
+            url: '/project/editProject',
+            type: 'post',
+            dataType: "text",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (response) {
+                window.location.href = "/project/List";
+            },
+            error: function (request, status, error) {
+                console.log(request);
+                console.log(status);
+                console.log(error);
+            },
+        })
+    }
+</script>
+
+</body>
+</html>

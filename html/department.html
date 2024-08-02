@@ -72,23 +72,35 @@
                                     <a id="2" class="title depart"><span>경영지원팀</span></a>
                                 </li>
                                 <li class="org-list">
-                                    <a id="3" class="title depart"><span>전략기획본부</span></a>
+                                    <a id="3" class="title depart">
+                                        <span>전략기획본부</span>
+                                        <i class="fa-solid fa-chevron-right fa-xs"></i>
+                                        <i class="fa-solid fa-chevron-down fa-xs"></i>
+                                    </a>
                                     <a id="6" class="next-title desc depart">사업기획팀</a>
                                     <a id="7" class="next-title desc depart">운영기획팀</a>
                                 </li>
                                 <li class="org-list">
-                                    <a id="4" class="title depart"><span>디자인본부</span></a>
+                                    <a id="4" class="title depart">
+                                        <span>디자인본부</span>
+                                        <i class="fa-solid fa-chevron-right fa-xs"></i>
+                                        <i class="fa-solid fa-chevron-down fa-xs"></i>
+                                    </a>
                                     <a id="8" class="next-title desc depart">디자인팀</a>
-                                    <a id="9" class="next-title desc depart">UX팀</a>
+                                    <a id="9" class="next-title desc depart">UX팀<i class="fa-solid fa-chevron-down fa-xs"></i></a>
                                     <a id="10" class="part desc depart">파트1</a>
                                     <a id="11" class="part desc depart">파트2</a>
                                 </li>
                                 <li class="org-list">
-                                    <a id="5" class="title depart"><span>개발본부</span></a>
-                                    <a id="12" class="next-title desc depart">웹개발팀</a>
+                                    <a id="5" class="title depart">
+                                        <span>개발본부</span>
+                                        <i class="fa-solid fa-chevron-right fa-xs"></i>
+                                        <i class="fa-solid fa-chevron-down fa-xs"></i>
+                                    </a>
+                                    <a id="12" class="next-title desc depart">웹개발팀<i class="fa-solid fa-chevron-down fa-xs"></i></a>
                                     <a id="14" class="part desc depart">파트1</a>
                                     <a id="15" class="part desc depart">파트2</a>
-                                    <a id="13" class="next-title desc depart">커머스개발팀</a>
+                                    <a id="13" class="next-title desc depart">커머스개발팀<i class="fa-solid fa-chevron-down fa-xs"></i></a>
                                     <a id="18" class="part desc depart">파트1</a>
                                     <a id="19" class="part desc depart">파트2</a>
                                     <a id="16" class="next-title desc depart">인프라팀</a>
@@ -551,7 +563,7 @@
         if (memberPart == '') {
             memberPart = -1;
         }
-        let memberSalary = document.querySelector("#salary").value.replaceAll(',', '');
+        // let memberSalary = document.querySelector("#salary").value.replaceAll(',', '');
 
         if (!validateForm()) {
             return;
@@ -571,7 +583,7 @@
                 depart: memberDepart,
                 team: memberTeam,
                 part: memberPart,
-                salary: memberSalary
+                // salary: memberSalary
             })
         })
             .then((response) => {
@@ -622,27 +634,7 @@
             return false;
         }
 
-        // 팀 유효성 검사
-        // let memberTeam = document.querySelector("#team");
-        // console.log(document.querySelector("#team").value)
-        // if (!validateInput(memberTeam, "팀")) {
-        //     return false;
-        // }
-
-        // 파트 유효성 검사
-        // let memberPart = document.querySelector("#part");
-        // if (!validateInput(memberPart, "파트")) {
-        //     return false;
-        // }
-
-        // 연봉 유효성 검사
-        let memberSalary = document.querySelector("#salary");
-        if (!validateNumber(memberSalary, "연봉") || !validateInput(memberSalary, "연봉")) {
-            return false;
-        }
-
         // TODO 이름 중복 검사
-
         return true;
     }
 
@@ -731,15 +723,10 @@
     async function clickEdit() {
 
         // 멤버 클릭하고 수정 누르는가?
-        // if (!isClickMember()) {
-        //     alert("멤버를 선택해주세요");
-        //     return;
-        // }
-
-        let editBtn = document.querySelector('.profile-edit-btn');
-        let saveBtn = document.querySelector('.profile-save-btn');
-        editBtn.style.display = 'none';
-        saveBtn.style.display = 'block';
+        if (!isClickMember()) {
+            alert("멤버를 선택해주세요");
+            return;
+        }
 
         let table = document.getElementById('infoTable');
         let tds = table.getElementsByTagName('td');
@@ -762,7 +749,6 @@
             partInfo = await getChildDepartment(Number(tds[2].className.split(' ')[1]));
             checkUntil++;
         }
-
 
         let order = ['', 'depart', 'team', 'part', ''];
         let childListOrder = ['', departInfo, teamInfo, partInfo];
@@ -813,15 +799,10 @@
     function clickSave() {
 
         // 수정 클릭하고 저장 누르는가?
-        // if (!isClickEdit) {
-        //     alert("수정 버튼을 누르고 진행해주세요.");
-        //     return;
-        // }
-
-        let editBtn = document.querySelector('.profile-edit-btn');
-        let saveBtn = document.querySelector('.profile-save-btn');
-        editBtn.style.display = 'block';
-        saveBtn.style.display = 'none';
+        if (!isClickEdit) {
+            alert("수정 버튼을 누르고 진행해주세요.");
+            return;
+        }
 
         let table = document.getElementById('infoTable');
 

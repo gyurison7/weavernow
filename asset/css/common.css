@@ -38,17 +38,17 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 /*========== Table ==========*/
 .common-table-wrap { display: flex; width: 100%; padding: 0 20px 20px; font-size: 15px; } 
 .common-table { width: 100%; border-radius: 4px; border-collapse: collapse; border-spacing: 0; table-layout: auto; word-break: keep-all; } 
-.common-table.main-table { width: 60%; margin-bottom: 9.5px; } 
+.common-table.main-table { width: 60%; margin-bottom: 8px; } 
 .add-table-wrap { display: flex; overflow-x: scroll; width: 40%; } 
 .add-table-wrap::-webkit-scrollbar { height: 8px; } 
 .add-table-wrap::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 8px; } 
-.add-table-wrap::-webkit-scrollbar-thumb { background: var(--dark-gray); border-radius: 8px;  } 
+.add-table-wrap::-webkit-scrollbar-thumb { background: var(--dark-gray); border-radius: 8px; } 
 .common-table.add-table { min-width: 290px; } 
 .common-table.last-table { border-right: 1px solid var(--dark-gray); } 
 .common-table thead { background-color: var(--main-blue); } 
 .common-table thead th { padding: 0.89em 1.11em; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); color: #fff; text-align: center; vertical-align: middle; white-space: nowrap; } 
-.common-table tbody tr td { height: 60px; padding: 0.89em 0.5em; background-color: #fff; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); text-align: center; vertical-align: middle; } 
-.common-table tbody tr.sum td { background-color: #EDF2F6; } 
+.common-table tbody tr td { height: 60px; padding: 0.8em 0.5em; background-color: #fff; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); text-align: center; vertical-align: middle; } 
+.common-table tbody tr.sum td { background-color: var(--light-gray); } 
 .con-td { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; } 
 .totalWageSum, .totalSalarySum { color: var(--main-blue); } 
 
@@ -63,9 +63,10 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 .common-btn.modify-btn:hover { box-shadow: 5px 5px 15px rgba(252, 214, 105, 0.5); } 
 .common-btn.download-btn:hover { box-shadow: 5px 5px 15px rgba(88, 213, 169, 0.5); } 
 .common-btn.cancel-btn:hover { box-shadow: 5px 5px 15px rgba(230, 230, 230, 0.5); } 
-.small-btn { min-width: auto; padding: 8px 15px; box-shadow: none; } 
+.small-btn { min-width: auto; max-height: 36px; padding: 8px 15px; box-shadow: none; } 
 .reg-member-btn { margin-left: 15px; } 
 .profile-save-btn { display: none; } 
+.common-btn.remove-member { border-color: #FF503C; color: #FF503C; } 
 
 /*========== profile ==========*/
 .profile-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; border-radius: 8px; border: 1px solid var(--border-gray); } 
@@ -87,10 +88,10 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 .done { background-color: var(--dark-gray); color: #676767; } 
 
 /*========== Input ==========*/
-.input-box input { width: 100%; height: auto; padding: 8px 12px; border: 1px solid var(--border-gray); border-radius: 4px; font-size: 14px; color: #777; } 
+.input-box input { width: 100%; height: auto; max-height: 34px; padding: 8px 12px; border: 1px solid var(--border-gray); border-radius: 4px; font-size: 14px; color: #777; } 
 input.common-btn { color: #fff; } 
 input.detail-input { min-width: 64px; color: var(--main-blue); font-weight: 500; font-variation-settings: "wght" 500; text-align: center; } 
-.salary.detail-input { width: 120px; }
+.salary.detail-input { width: 120px; } 
 
 /* Input - Error */
 .login-form-wrap.error input:not([type="submit"]) { border: 1px solid #E82929; } 
@@ -121,12 +122,12 @@ input[type="checkbox"] + label { cursor: pointer; }
 .reg-form-area .reg-form-wrap .input-box .ui-datepicker-trigger { display: none; } 
 .reg-form-area .reg-form-wrap .input-box.member { position: relative; align-items: stretch; } 
 .reg-form-area .reg-form-wrap .input-box.member label { height: auto; } 
-.reg-form-area .reg-form-wrap .input-box.member .member-wrap { display: grid; grid-template-columns: minmax(auto, 607px) 120px; gap: 10px; width: 100%; padding: 10px; } 
+.reg-form-area .reg-form-wrap .input-box.member .member-wrap { display: flex; flex-direction: column; gap: 10px; width: 100%; padding: 10px; } 
+.reg-form-area .reg-form-wrap .input-box.member .add-member-wrap { display: flex; flex-wrap: nowrap; gap: 10px; } 
 .reg-form-area .reg-form-wrap .input-box.member input { margin: 0; } 
+.reg-form-area .reg-form-wrap .input-box.member input:disabled { background-color: white; }
 .reg-form-area .reg-form-wrap .input-box #member-list { display: none; position: absolute; top: 40px; left: 160px; width: 100%; max-width: 629px; } 
-.reg-form-area .border-btn { display: flex; justify-content: center; align-items: center; height: 34.4px; box-shadow: none; } 
 .reg-form-area .btn-wrap { justify-content: center; } 
-.reg-form-area .btn-wrap .cancel-btn { display: flex; justify-content: center; align-items: center; } 
 
 /*========== Select ==========*/
 select { min-width: 64px; height: 34px; padding: 4px 12px; border: 1px solid #C9C9C9; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; } 

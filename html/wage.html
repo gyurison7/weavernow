@@ -30,6 +30,7 @@
         <!-- css -->
         <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="../asset/css/common.css">
+        <link rel="stylesheet" href="../asset/css/wage.css">
         <!-- <%@include file="../include/file.jsp" %> -->
         <!-- js -->
         <script src="../asset/js/jquery-1.12.4.min.js"></script>
@@ -80,18 +81,12 @@
                     <div class="contents">
                         <div class="reg-form-area">
                             <div class="reg-form-wrap" id="form-wrap">
-                                <div class="input-box-wrap">
+                                <div class="input-box-wrap header">
                                     <div class="input-box">
-                                        <label class="job"></label>
-                                        <input type="text" class="lowWageHeader"
-                                               style="background-color: black; color : white; text-align: center"
-                                               placeholder="25백분위" value="25백분위" disabled>
-                                        <input type="text" class="avgWageHeader"
-                                               style="background-color: black; color : white; text-align: center"
-                                               placeholder="평균백분위" value="평균백분위" disabled>
-                                        <input type="text" class="highWageHeader"
-                                               style="background-color: black; color : white; text-align: center"
-                                               placeholder="75백분위" value="75백분위" disabled>
+                                        <label class="job wage-header"></label>
+                                        <input type="text" class="lowWageHeader wage-header" placeholder="25백분위" value="25백분위" disabled>
+                                        <input type="text" class="avgWageHeader wage-header" placeholder="평균백분위" value="평균백분위" disabled>
+                                        <input type="text" class="highWageHeader wage-header" placeholder="75백분위" value="75백분위" disabled>
                                     </div>
                                 </div>
                                 <c:choose>
@@ -99,16 +94,10 @@
                                         <c:forEach items="${wageInfo}" var="wage">
                                             <div class="input-box-wrap">
                                                 <div class="input-box check">
-                                                    <label class="job" value="${wage.job}">${wage.job}</label>
-                                                    <input type="text" class="lowWage" style="text-align: right"
-                                                           placeholder="25백분위" value="${wage.lowWage}"
-                                                           onkeyup="changeWithComma(this)">
-                                                    <input type="text" class="avgWage" style="text-align: right"
-                                                           placeholder="평균백분위" value="${wage.avgWage}"
-                                                           onkeyup="changeWithComma(this)">
-                                                    <input type="text" class="highWage" style="text-align: right"
-                                                           placeholder="75백분위" value="${wage.highWage}"
-                                                           onkeyup="changeWithComma(this)">
+                                                    <label class="job" value="IT기획자">IT기획자</label>
+                                                    <input type="text" class="lowWage wage-value" placeholder="25백분위" value="352515" onkeyup="changeWithComma(this)">
+                                                    <input type="text" class="avgWage wage-value" placeholder="평균백분위" value="481654" onkeyup="changeWithComma(this)">
+                                                    <input type="text" class="highWage wage-value" placeholder="75백분위" value="596324" onkeyup="changeWithComma(this)">
                                                 </div>
                                             </div>
                                         </c:forEach>
@@ -118,12 +107,9 @@
                                             <div class="input-box-wrap">
                                                 <div class="input-box check">
                                                     <label class="job">${wage.job}</label>
-                                                    <input type="text" class="lowWage" style="text-align: center"
-                                                           placeholder="25백분위" value="">
-                                                    <input type="text" class="avgWage" style="text-align: center"
-                                                           placeholder="평균백분위" value="">
-                                                    <input type="text" class="highWage" style="text-align: center"
-                                                           placeholder="75백분위" value="">
+                                                    <input type="text" class="lowWage wage-value" placeholder="25백분위" value="">
+                                                    <input type="text" class="avgWage wage-value" placeholder="평균백분위" value="">
+                                                    <input type="text" class="highWage wage-value" placeholder="75백분위" value="">
                                                 </div>
                                             </div>
                                         </c:forEach>
@@ -131,8 +117,8 @@
                                 </c:choose>
 
                             </div>
-                            <div class="btn-wrap" style="text-align: center">
-                                <a href="/main" class="common-btn cancel-btn">취소</a>
+                            <div class="btn-wrap">
+                                <a href="/html/main.html" class="common-btn cancel-btn">취소</a>
                                 <button class="common-btn btn-hover" onclick="saveWageInfo()">저장</button>
                             </div>
                         </div>
@@ -140,6 +126,17 @@
                 </div>
             </section>
         </main>
+
+        <!--========== FOOTER ==========-->
+        <footer id="footer"></footer>
+        <script>
+            $(function () {
+                $("#footer").load("include/footer.html", function () {
+                    // 로드된 후에 실행될 코드
+                    $.getScript("../asset/js/basic.js");
+                });
+            });
+        </script>
     </div>
 </div>
 
