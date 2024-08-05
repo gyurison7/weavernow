@@ -57,124 +57,92 @@
                         </div>
                         <div class="contents">
                             <div class="reg-form-area">
-                                <form action="">
-                                    <div class="reg-form-wrap">
-                                        <div class="input-box-wrap">
-                                            <div class="input-box">
-                                                <label for="project-name">프로젝트명</label>
-                                                <input type="text" name="project-name" id="project-name">
-                                            </div>
+                                <div class="reg-form-wrap" id="form-wrap">
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="project-name">프로젝트명</label>
+                                            <input type="text" name="projectName" id="project-name">
                                         </div>
-                                        <div class="input-box-wrap">
-                                            <div class="input-box">
-                                                <label for="datepicker-from">시작일자</label>
-                                                <input type="text" name="datepicker-from" id="datepicker-from">
-                                            </div>
-                                            <div class="input-box datepicker-to">
-                                                <label for="datepicker-to">종료일자</label>
-                                                <input type="text" name="datepicker-to" id="datepicker-to">
-                                            </div>
+                                    </div>
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="datepicker-from">시작일자</label>
+                                            <input type="text" name="startDate" id="datepicker-from"
+                                                   onchange="changeStartDate()">
                                         </div>
-                                        <div class="input-box-wrap">
-                                            <div class="input-box">
-                                                <label for="pm">PM</label>
-                                                <input
-                                                    type="text"
-                                                    name="pm"
-                                                    id="pm"
-                                                    placeholder="PM 검색"
-                                                    class="memberName"
-                                                    onmouseup="modalOpen(this)">
-                                                <button class="common-btn border-btn small-btn add-member" onclick="modalOpen('pm', this)">
-                                                    검색
-                                                </button>
-                                            </div>
+                                        <div class="input-box datepicker-to">
+                                            <label for="datepicker-to">종료일자</label>
+                                            <input type="text" name="endDate" id="datepicker-to">
                                         </div>
-                                        <div class="input-box-wrap">
-                                            <div class="input-box member">
-                                                <label for="member">멤버</label>
-                                                <div class="member-wrap">
-                                                    <div class="add-member-wrap">
-                                                        <input
-                                                            type="text"
-                                                            name="member"
-                                                            id="member"
-                                                            placeholder=""
-                                                            value="">
-                                                        <select name="select-job" id="select-job">
-                                                            <option>선택</option>
-                                                            <option value="">IT기획자</option>
-                                                            <option value="">IT컨설턴트</option>
-                                                            <option value="">업무분석가</option>
-                                                            <option value="">데이터분석가</option>
-                                                            <option value="">IT아키텍트</option>
-                                                            <option value="">UI/UX기획/개발자</option>
-                                                            <option value="">UI/UX디자이너</option>
-                                                            <option value="">응용SW개발자</option>
-                                                            <option value="">시스템SW개발자</option>
-                                                            <option value="">정보시스템운용자</option>
-                                                            <option value="">IT지원기술자</option>
-                                                            <option value="">IT마케터</option>
-                                                            <option value="">IT품질관리자</option>
-                                                            <option value="">IT테스터</option>
-                                                            <option value="">IT감리</option>
-                                                            <option value="">정보보안전문가</option>
-                                                        </select>
-                                                        <button
-                                                            class="common-btn border-btn small-btn add-member"
-                                                            onclick="modalOpen('member', this)">
-                                                            검색
-                                                        </button>
-                                                    </div>
-                                                    <div class="add-member-wrap">
-                                                        <input
-                                                            type="text"
-                                                            name="member"
-                                                            id="member"
-                                                            placeholder=""
-                                                            value="">
-                                                        <select name="select-job" id="select-job">
-                                                            <option>선택</option>
-                                                            <option value="">IT기획자</option>
-                                                            <option value="">IT컨설턴트</option>
-                                                            <option value="">업무분석가</option>
-                                                            <option value="">데이터분석가</option>
-                                                            <option value="">IT아키텍트</option>
-                                                            <option value="">UI/UX기획/개발자</option>
-                                                            <option value="">UI/UX디자이너</option>
-                                                            <option value="">응용SW개발자</option>
-                                                            <option value="">시스템SW개발자</option>
-                                                            <option value="">정보시스템운용자</option>
-                                                            <option value="">IT지원기술자</option>
-                                                            <option value="">IT마케터</option>
-                                                            <option value="">IT품질관리자</option>
-                                                            <option value="">IT테스터</option>
-                                                            <option value="">IT감리</option>
-                                                            <option value="">정보보안전문가</option>
-                                                        </select>
-                                                    </div>
+                                    </div>
+                                    <div class="input-box-wrap">
+                                        <div class="input-box pm">
+                                            <label for="pm">
+                                                PM
+                                            </label>
+                                            <input type="text" name="pm" id="pm" placeholder="" class="memberName" disabled>
+                                            <button class="common-btn border-btn small-btn add-member"
+                                                    onclick="modalOpen('pm', this)">검색
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="input-box-wrap">
+                                        <div class="input-box member">
+                                            <label for="member">
+                                                멤버
+                                            </label>
+                                            <div class="member-wrap">
+                                                <div class="add-member-wrap">
+                                                    <input type="text" class="memberName" name="member" id="member"
+                                                           placeholder="" disabled>
+                                                    <select name="select-job" class="memberJob" id="select-job1">
+                                                        <option>선택</option>
+                                                        <option value="IT기획자">IT기획자</option>
+                                                        <option value="IT컨설턴트">IT컨설턴트</option>
+                                                        <option value="업무분석가">업무분석가</option>
+                                                        <option value="데이터분석가">데이터분석가</option>
+                                                        <option value="IT아키텍트">IT아키텍트</option>
+                                                        <option value="UI/UX기획/개발자">UI/UX기획/개발자</option>
+                                                        <option value="UI/UX디자이너">UI/UX디자이너</option>
+                                                        <option value="응용SW개발자">응용SW개발자</option>
+                                                        <option value="시스템SW개발자">시스템SW개발자</option>
+                                                        <option value="정보시스템운용자">정보시스템운용자</option>
+                                                        <option value="IT지원기술자">IT지원기술자</option>
+                                                        <option value="IT마케터">IT마케터</option>
+                                                        <option value="IT품질관리자">IT품질관리자</option>
+                                                        <option value="IT테스터">IT테스터</option>
+                                                        <option value="IT감리">IT감리</option>
+                                                        <option value="정보보안전문가">정보보안전문가</option>
+                                                    </select>
+                                                    <button class="common-btn border-btn small-btn add-member"
+                                                            onclick="modalOpen('member', this)">검색
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="input-box-wrap">
-                                            <div class="input-box">
-                                                <label for="cost-weight">노임단가 가중치</label>
-                                                <input type="text" name="cost-weight" id="cost-weight" placeholder="재경비">
-                                                <input type="text" name="tech-weight" id="tech-weight" placeholder="기술비">
-                                            </div>
-                                        </div>
-                                        <div class="input-box-wrap">
-                                            <div class="input-box">
-                                                <label for="salary-weight">급여 가중치</label>
-                                                <input type="text" name="salary-weight" id="salary-weight" placeholder="급여">
-                                            </div>
+                                    </div>
+                                    <div id="input-box-weight" class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="cost-weight">노임단가 가중치</label>
+                                            <input type="text" name="wageWeight1" id="cost-weight"
+                                                   placeholder="재경비">
+                                            <input type="text" name="wageWeight2" id="tech-weight"
+                                                   placeholder="기술비">
                                         </div>
                                     </div>
-                                    <div class="btn-wrap">
-                                        <a href="project-list.html" class="common-btn cancel-btn btn-hover">취소</a>
-                                        <button type="submit" class="common-btn btn-hover">저장</button>
+                                    <div class="input-box-wrap">
+                                        <div class="input-box">
+                                            <label for="salary-weight">급여 가중치</label>
+                                            <input type="text" name="salaryWeight" id="salary-weight"
+                                                   placeholder="급여">
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="btn-wrap">
+                                    <a href="/html/project-list.html" class="common-btn cancel-btn btn-hover">취소</a>
+                                    <button type="submit" class="common-btn btn-hover" onclick="saveProjectClick()">저장
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,131 +207,212 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                    
+                                            <tr onclick="selectMember(this, 10)">
+                                                <td class="rank">CEO</td>
+                                                <td class="name">전세경</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 11)">
+                                                <td class="rank">이사</td>
+                                                <td class="name">지민아</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 12)">
+                                                <td class="rank">이사</td>
+                                                <td class="name">황치원</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 37)">
+                                                <td class="rank">L2</td>
+                                                <td class="name">강윤식</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 14)">
+                                                <td class="rank">L2</td>
+                                                <td class="name">김종협</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 15)">
+                                                <td class="rank">L2</td>
+                                                <td class="name">이선아</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 13)">
+                                                <td class="rank">L2</td>
+                                                <td class="name">장민기</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 43)">
+                                                <td class="rank">L2</td>
+                                                <td class="name">전세영</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 19)">
+                                                <td class="rank">L1</td>
+                                                <td class="name">김혜경</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 17)">
+                                                <td class="rank">L1</td>
+                                                <td class="name">노병열</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 28)">
+                                                <td class="rank">L1</td>
+                                                <td class="name">유동균</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 42)">
+                                                <td class="rank">L1</td>
+                                                <td class="name">조동현</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 33)">
+                                                <td class="rank">P4</td>
+                                                <td class="name">임지훈</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 20)">
+                                                <td class="rank">P4</td>
+                                                <td class="name">장윤희</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 2)">
+                                                <td class="rank">P4</td>
+                                                <td class="name">홍길동</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 7)">
+                                                <td class="rank">P4</td>
+                                                <td class="name">황준석</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 24)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">김선형</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 9)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">김수경</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 38)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">김효정</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 8)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">박근형</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 21)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">서지수</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 6)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">이아진</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 22)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">이혜민</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 39)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">이희권</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 27)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">임혜린</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 44)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">정성찬</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 26)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">최인선</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 29)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">홍두희</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 35)">
+                                                <td class="rank">P3</td>
+                                                <td class="name">황지현</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 16)">
+                                                <td class="rank">P2</td>
+                                                <td class="name">강유림</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 30)">
+                                                <td class="rank">P2</td>
+                                                <td class="name">구수민</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 31)">
+                                                <td class="rank">P2</td>
+                                                <td class="name">김유진</td>
+                                            </tr>
+                                        
+                                            <tr onclick="selectMember(this, 5)">
                                                 <td class="rank">P2</td>
                                                 <td class="name">손규리</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                        
+                                            <tr onclick="selectMember(this, 23)">
                                                 <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                                <td class="name">손지원</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                        
+                                            <tr onclick="selectMember(this, 32)">
                                                 <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                                <td class="name">안병찬</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                        
+                                            <tr onclick="selectMember(this, 40)">
                                                 <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                                <td class="name">양희진</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                        
+                                            <tr onclick="selectMember(this, 41)">
                                                 <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                                <td class="name">이나경</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
+                                        
+                                            <tr onclick="selectMember(this, 36)">
                                                 <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                                <td class="name">조민경</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                        
+                                            <tr onclick="selectMember(this, 3)">
+                                                <td class="rank">P1</td>
+                                                <td class="name">정승현</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                        
+                                            <tr onclick="selectMember(this, 4)">
+                                                <td class="rank">P1</td>
+                                                <td class="name">조유진</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
+                                        
+                                            <tr onclick="selectMember(this, 1)">
+                                                <td class="rank">P1</td>
+                                                <td class="name">조준희</td>
                                             </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
-                                            <tr onclick="selectMember(this)">
-                                                <td class="memberSeq" style="display: none">5</td>
-                                                <td class="rank">P2</td>
-                                                <td class="name">손규리</td>
-                                            </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -396,7 +445,6 @@
 
             const modal = document.getElementById("modalWrap"); // 모달 창 요소 가져오기
             let checkType;
-            let projectMemberList = [];
             let projectMemberList = [];
         
             function memberSave() {
@@ -495,7 +543,7 @@
                         `<li class="member-item">
                                 <button class="delete-btn">
                                     <span class="member-name \${memberSeq}">\${memberName}</span>
-                                     <img src="/resources/img/common/btn-close.svg" alt="">
+                                     <img src="../asset/images/common/btn-close.svg">
                                  </button>
                             </li>
                             `);

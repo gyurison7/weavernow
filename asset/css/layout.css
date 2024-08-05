@@ -35,6 +35,7 @@ a,button,input,select,textarea { -webkit-tap-highlight-color: transparent; }
 .header-top { display: flex; justify-content: flex-end; align-items: center; width: calc(100% - 216px); height: 56px; padding: 20px; background-color: #fff; margin-left: auto; gap: 20px; transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
 .header-top.on { width: calc(100% - 56px); }
 .header-top .header-profile span { color: var(--dark-blue); font-variation-settings: 'wght' 600; } 
+.header-top .logout-btn { font-size: 14px; }
 .header-top .logout-btn span { margin-left: 4px; } 
 .header-left { display: flex; flex-direction: column; align-items: center; position: fixed; top: 0; left: 0; overflow: hidden; width: 216px; height: 100%; background-color: var(--dark-blue); transition: width 0.5s ease; -webkit-transition: width 0.5s ease; -moz-transition: width 0.5s ease; -ms-transition: width 0.5s ease; -o-transition: width 0.5s ease; } 
 .header-left.on { width: 56px; }

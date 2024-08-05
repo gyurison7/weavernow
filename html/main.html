@@ -54,61 +54,60 @@
                             <h2 class="section-tit">프로젝트 현황</h2>
                         </div>
                         <div class="contents">
-                            <div class="cont-tit">
+                            <!-- <div class="cont-tit">
                                 <span class="name">조준희</span>
                                 님 프로젝트 현황
-                            </div>
+                            </div> -->
                             <div class="main-wrap">
-                                <div class="left-area">
+                                <div class="top-area">
                                     <div class="profile-area">
+                                        <div class="profile-info">
+                                            <div class="profile-item">
+                                                <i class="fa-solid fa-user"></i>
+                                                <span class="profile-title">이름</span>
+                                                <span>|</span>
+                                                <span>조준희</span>
+                                            </div>
+                                            <div class="profile-item">
+                                                <i class="fa-solid fa-building"></i>
+                                                <span class="profile-title">부서</span>
+                                                <span>|</span>
+                                                <span>개발본부</span>
+                                            </div>
+                                            <div class="profile-item">
+                                                <i class="fa-solid fa-users"></i>
+                                                <span class="profile-title">팀</span>
+                                                <span>|</span>
+                                                <span>웹개발팀</span>
+                                            </div>
+                                            <div class="profile-item">
+                                                <i class="fa-regular fa-id-card"></i>
+                                                <span class="profile-title">파트</span>
+                                                <span>|</span>
+                                                <span>파트1</span>
+                                            </div>
+                                        </div>
                                         <div class="profile-image">
                                             <img src="../asset/images/common/user.webp" alt="">
                                         </div>
-                                        <div class="profile-info">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>이름</th>
-                                                        <td>조준희</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>부서</th>
-                                                        <td>개발본부</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>팀</th>
-                                                        <td>웹개발팀</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>파트</th>
-                                                        <td>파트1</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="right-area">
+                                <div class="bottom-area">
+                                    <div class="project-btn-wrap">
+                                        <button class="common-btn border-btn">서울대학교</button>
+                                        <button class="common-btn border-btn active">영풍문고</button>
+                                        <button class="common-btn border-btn">네오팜</button>
+                                        <button class="common-btn border-btn">아모레퍼시픽</button>
+                                    </div>
                                     <div class="chart-area">
-                                        <div class="project-btn-wrap">
-                                            <button class="common-btn btn-hover">서울대학교</button>
-                                            <button class="common-btn btn-hover active">영풍문고</button>
-                                            <button class="common-btn btn-hover">네오팜</button>
-                                            <button class="common-btn btn-hover">아모레퍼시픽</button>
-                                        </div>
-                                        <div class="chart-wrap chart1">
-                                            <canvas id="myChart1" width="500" height="500" class="my-chart"></canvas>
-                                        </div>
-                                        <div class="chart-wrap chart2">
-                                            <canvas id="myChart2" width="500" height="500" class="my-chart"></canvas>
-                                        </div>
-                                        <div class="chart-wrap chart3">
-                                            <canvas id="myChart3" width="500" height="500" class="my-chart"></canvas>
-                                        </div>
-                                        <div class="chart-btn-wrap">
-                                            <button class="chart1 chart-btn common-btn active">1</button>
-                                            <button class="chart2 chart-btn common-btn">2</button>
-                                            <button class="chart3 chart-btn common-btn">3</button>
+                                        <div class="chart-title">영풍문고</div>
+                                        <div class="chart-content">
+                                            <div class="chart-wrap chart1">
+                                                <canvas id="myChart1" width="500" height="500" class="my-chart"></canvas>
+                                            </div>
+                                            <div class="chart-wrap chart2">
+                                                <canvas id="myChart2" width="500" height="500" class="my-chart"></canvas>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +136,7 @@
                     options: {
                         plugins: {
                             title: {
-                                display: true,
+                                display: false,
                                 text: "영풍문고",
                                 font: {
                                     size: 18,
@@ -162,12 +161,12 @@
                 new Chart(ctx2, {
                     type: "pie",
                     data: {
-                        labels: ["Blue", "Green", "Pink", "Purple"],
+                        labels: ["Blue", "Green", "Pink", "Purple", "Yellow"],
                         datasets: [
                             {
-                                data: [15, 25, 20, 40],
+                                data: [15, 25, 20, 30, 10],
                                 fill: false,
-                                backgroundColor: ["#7795F8", "#58D5A9", "#F8D0D8", "#BEB0F4"],
+                                backgroundColor: ["#7795F8", "#58D5A9", "#F8D0D8", "#BEB0F4", "#FCD669"],
                                 hoverOffset: 4,
                             },
                         ],
@@ -175,7 +174,7 @@
                     options: {
                         plugins: {
                             title: {
-                                display: true,
+                                display: false,
                                 text: "영풍문고",
                                 font: {
                                     size: 18,
@@ -187,43 +186,6 @@
                             },
                             legend: {
                                 position: "bottom",
-                            },
-                        },
-                    },
-                });
-                const ctx3 = document.getElementById("myChart3");
-                new Chart(ctx3, {
-                    type: "bar",
-                    data: {
-                        labels: ["노임단가", "실급여"],
-                        datasets: [
-                            {
-                                data: [4, 2],
-                                backgroundColor: ["#7795F8", "#BEB0F4"],
-                                hoverBackgroundColor: ["#6772E5", "#9D85C9"],
-                            },
-                        ],
-                    },
-                    options: {
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: "영풍문고",
-                                font: {
-                                    size: 18,
-                                },
-                                padding: {
-                                    top: 10,
-                                    bottom: 30,
-                                },
-                            },
-                            legend: {
-                                display: false,
-                            },
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
                             },
                         },
                     },
