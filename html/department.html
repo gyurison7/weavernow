@@ -63,14 +63,16 @@
                 <div class="contents">
                     <div class="cont-tit">
                         <span>
-                            디자인본부
+                            <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
                             <i class="fa-solid fa-chevron-right fa-xs"></i>
                         </span>
-                        <span>
+                        <span class="selectedDepartName">디자인본부</span>
+                        <span class="selectedTeamName">
+                            <i class="fa-solid fa-chevron-right fa-xs"></i>
                             UX팀
-                            <i class="fa-solid fa-chevron-right fa-xs"></i>
                         </span>
-                        <span>
+                        <span class="selectedPartName">
+                            <i class="fa-solid fa-chevron-right fa-xs"></i>
                             파트1
                         </span>
                     </div>
@@ -509,6 +511,12 @@
     let memberSeq;
     let departSize;
     let isClickEdit = false;
+    let checkUntil = 1;
+    let selectCnt = 0;
+    let selectCntForCreateMember = 0;
+    let selectedDepart;
+    let nowClick = 0;
+    let order = ['', 'depart', 'team', 'part', ''];
 
     $(document).ready(async function () {
         let result = await getChildDepartment(-1);
@@ -540,49 +548,76 @@
         let memberYear = document.querySelector("#year").value;
         let memberJob = document.querySelector("#job").value;
         let memberRank = document.querySelector("#rank").value;
-        let memberDepart = document.querySelector("#depart").value;
+        let memberDepart = document.querySelector("#departInputForCreateMember").value;
         if (memberDepart == '') {
             memberDepart = -1;
         }
-        let memberTeam = document.querySelector("#team").value;
-        if (memberTeam == '') {
+
+        let memberTeam;
+        if (selectCntForCreateMember >= 2) {
+            memberTeam = document.querySelector("#teamInputForCreateMember").value;
+            if (memberTeam == '') {
+                memberTeam = -1;
+            }
+        } else {
             memberTeam = -1;
         }
-        let memberPart = document.querySelector("#part").value;
-        if (memberPart == '') {
+
+        let memberPart;
+        if (selectCntForCreateMember >= 3) {
+            memberPart = document.querySelector("#partInputForCreateMember").value;
+            if (memberPart == '') {
+                memberPart = -1;
+            }
+        } else {
             memberPart = -1;
         }
-        // let memberSalary = document.querySelector("#salary").value.replaceAll(',', '');
 
         if (!validateForm()) {
             return;
         }
 
-        fetch("/member", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: memberName,
-                grade: memberGrade,
-                year: memberYear,
-                job: memberJob,
-                rank: memberRank,
-                depart: memberDepart,
-                team: memberTeam,
-                part: memberPart,
-                // salary: memberSalary
-            })
+        action_popup.confirm("등록하시겠습니까?", function (res) {
+            if (res) {
+
+                fetch("/member", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: memberName,
+                        grade: memberGrade,
+                        year: memberYear,
+                        job: memberJob,
+                        rank: memberRank,
+                        depart: memberDepart,
+                        team: memberTeam,
+                        part: memberPart,
+                        // salary: memberSalary
+                    })
+                })
+                    .then((response) => {
+                        action_popup.alert("등록되었습니다.")
+                        modal.style.display = 'none';
+                    })
+            }
         })
-            .then((response) => {
-                alert("등록되었습니다.");
-                modal.style.display = 'none';
-            })
+
+    }
+
+    function createMemberConfirm() {
+
+
     }
 
     function cancelBtn() {
-        modal.style.display = "none";
+        action_popup.confirm("취소하시겠습니까?", function (res) {
+            if(res) {
+                modal.style.display = "none";
+            }
+        })
+
     }
 
     function validateForm() {
@@ -618,7 +653,7 @@
         }
 
         // 부서 유효성 검사
-        let memberDepart = document.querySelector("#depart");
+        let memberDepart = document.querySelector("#departInputForCreateMember");
         if (!validateInput(memberDepart, "부서")) {
             return false;
         }
@@ -652,19 +687,129 @@
         return true;
     }
 
+    async function changeInfoForCreateMember(e) {
 
-    async function changeInfo(e) {
-
+        nowClick = parseInt(e.className.split(' ')[1]);
         let result = await getChildDepartment(e.value);
 
-        if (e.name == 'team') {
-            let selectElements = document.querySelectorAll('.select-part');
-            selectElements.forEach((select) => {
-                select.options.length = 0;
-            })
+        if (nowClick < selectCntForCreateMember) {
+            for (let i = nowClick + 1; i <= selectCntForCreateMember; i++) {
+
+                var info = order[i];
+                console.log(`#\${info}InputForCreateMember`);
+                var element = document.querySelector(`#\${info}InputForCreateMember`);
+                console.log(element);
+                var div = element.parentNode;
+
+                var select = div.querySelector('select');
+                if (select) {
+                    select.remove();
+                    console.log(`#\${info}InputForCreateMember` + "삭제!");
+                }
+            }
+        }
+
+        if (nowClick <= 3 && result.childList.length > 0) {
+
+            let divs = document.querySelectorAll('.selectForCreateMember');
+
+            let select = document.createElement('select');
+            select.className = 'select-' + order[nowClick + 1] + ' ' + (nowClick + 1);
+            select.name = order[nowClick + 2];
+            select.id = order[nowClick + 1] + "InputForCreateMember";
+            select.onchange = function () {
+                changeInfoForCreateMember(this);
+            };
+
+            let option = document.createElement('option');
+            option.value = -1;
+            option.text = '선택';
+            select.appendChild(option);
+
+            result.childList.forEach((element) => {
+                let option = document.createElement('option');
+                option.value = element.seq;
+                option.text = element.name;
+                select.appendChild(option);
+            });
+
+            divs[nowClick].appendChild(select);
+            nowClick++;
+
         }
 
         let SelectElements = document.querySelectorAll('.select-' + e.name);
+
+        SelectElements.forEach((select) => {
+            select.options.length = 0;
+            let idx = 0;
+            if (result.childList.length > 0) {
+                result.childList.forEach((element) => {
+                    if (idx++ == 0) {
+                        let option = document.createElement('option');
+                        option.value = -1;
+                        option.text = '선택';
+                        select.appendChild(option);
+                    }
+                    option = document.createElement('option');
+                    option.value = element.seq;
+                    option.text = element.name;
+                    select.appendChild(option);
+                })
+            }
+        })
+
+        selectCntForCreateMember = nowClick;
+    }
+
+    async function changeInfo(e) {
+
+        nowClick = parseInt(e.className.split(' ')[1]);
+        let result = await getChildDepartment(e.value);
+
+        if (nowClick < selectCnt) {
+            for (let i = nowClick + 1; i <= selectCnt; i++) {
+                var info = order[i];
+                var element = document.querySelector(`#\${info}Input`);
+                var td = element.parentNode;
+                td.textContent = '';
+                console.log(`#\${info}Input` + "삭제!");
+            }
+        }
+
+        if (nowClick <= 3 && result.childList.length > 0) {
+
+            let table = document.getElementById('infoTable');
+            let tds = table.getElementsByTagName('td');
+
+            let select = document.createElement('select');
+            select.className = 'select-' + order[nowClick + 1] + ' ' + (nowClick + 1);
+            select.name = order[nowClick + 2];
+            select.id = order[nowClick + 1] + "Input";
+            select.onchange = function () {
+                changeInfo(this);
+            };
+
+            let option = document.createElement('option');
+            option.value = -1;
+            option.text = '선택';
+            select.appendChild(option);
+
+            result.childList.forEach((element) => {
+                let option = document.createElement('option');
+                option.value = element.seq;
+                option.text = element.name;
+                select.appendChild(option);
+            });
+
+            tds[nowClick + 1].textContent = '';
+            tds[nowClick + 1].appendChild(select);
+            nowClick++;
+
+        }
+
+        let SelectElements = document.querySelectorAll('.select-' + e.name);
+
         SelectElements.forEach((select) => {
             select.options.length = 0;
             let idx = 0;
@@ -685,6 +830,7 @@
             }
         })
 
+        selectCnt = nowClick;
     }
 
     async function getChildDepartment(selectedValue) {
@@ -709,11 +855,11 @@
         }
     }
 
-    async function clickEdit() {
+    async function clickEdit(e) {
 
         // 멤버 클릭하고 수정 누르는가?
         if (!isClickMember()) {
-            alert("멤버를 선택해주세요");
+            alert("인원을 선택해주세요");
             return;
         }
 
@@ -728,7 +874,8 @@
 
         let departInfo = await getChildDepartment(-1);
         let teamInfo, partInfo;
-        let checkUntil = 1;
+
+        checkUntil = 0;
         if (tds[1].className.split(' ')[1]) {
             teamInfo = await getChildDepartment(Number(tds[1].className.split(' ')[1]));
             checkUntil++;
@@ -739,118 +886,142 @@
             checkUntil++;
         }
 
-        let order = ['', 'depart', 'team', 'part', ''];
+
         let childListOrder = ['', departInfo, teamInfo, partInfo];
 
-        for (let i = 1; i <= 3; i++) {
+
+        selectCnt = 0;
+        for (let i = 1; i <= checkUntil + 1; i++) {
+
+            if (childListOrder[i].childList.length == 0) {
+                continue;
+            }
+
             let select = document.createElement('select');
-            select.className = 'select-' + order[i];
+            select.className = 'select-' + order[i] + ' ' + i;
             select.name = order[i + 1];
             select.id = order[i] + "Input";
             select.onchange = function () {
                 changeInfo(this);
             };
-
+            selectCnt++;
 
             let currentValue = tds[i].textContent;
-            if (checkUntil >= i && childListOrder[i].childList.length > 0) {
 
-                // 조직정보에 팀이나, 파트가 있음에도 최종 파트까지 배정되지 못한 사람들 처리
-                let check = false;
-                if (i >= 2) {
-                    if (tds[i - 1].className.split(' ')[1] && !tds[i].className.split(' ')[1]) {
-                        let option = document.createElement('option');
-                        option.value = -1;
-                        option.text = '선택';
-                        check = true;
-                        select.appendChild(option);
-                    }
-                }
-
-                childListOrder[i].childList.forEach((element) => {
+            // 조직정보에 팀이나, 파트가 있음에도 최종 파트까지 배정되지 못한 사람들 처리
+            let check = false;
+            if (i >= 2) {
+                if (tds[i - 1].className.split(' ')[1] && !tds[i].className.split(' ')[1]) {
                     let option = document.createElement('option');
-                    option.value = element.seq;
-                    option.text = element.name;
-                    if (!check && element.name == currentValue) {
-                        option.selected = true;
-                    }
+                    option.value = -1;
+                    option.text = '선택';
+                    check = true;
                     select.appendChild(option);
-                });
+                }
             }
+
+            childListOrder[i].childList.forEach((element) => {
+                let option = document.createElement('option');
+                option.value = element.seq;
+                option.text = element.name;
+                if (!check && element.name == currentValue) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+
             tds[i].textContent = '';
             tds[i].appendChild(select);
         }
 
-        isClickEdit = true;
+        e.style.display = "none";
+        let saveBtnElement = document.querySelector(".profile-save-btn");
+        saveBtnElement.style.display = "block";
     }
 
 
-    function clickSave() {
+    function clickSave(e) {
 
-        // 수정 클릭하고 저장 누르는가?
-        if (!isClickEdit) {
-            alert("수정 버튼을 누르고 진행해주세요.");
-            return;
-        }
+        action_popup.confirm("수정하시겠습니까?", function (res) {
+            if (res) {
 
-        let table = document.getElementById('infoTable');
+                let table = document.getElementById('infoTable');
 
-        let memberNameElement = table.querySelector('#nameInput');
-        let memberDepartElement = table.querySelector('#departInput');
-        let memberTeamElement = table.querySelector('#teamInput');
-        let memberPartElement = table.querySelector('#partInput');
+                let memberDepartElement, memberTeamElement, memberPartElement;
 
-        let td = memberNameElement.parentNode;
-        td.textContent = memberNameElement.value;
+                let memberNameElement = table.querySelector('#nameInput');
+                let td = memberNameElement.parentNode;
+                td.textContent = memberNameElement.value;
 
-        if (memberDepartElement.value !== null && memberDepartElement.value !== undefined && memberDepartElement.value !== '') {
-            td = memberDepartElement.parentNode;
-            td.textContent = memberDepartElement.options[memberDepartElement.selectedIndex].text;
-        }
+                if (selectCnt >= 1) {
+                    memberDepartElement = table.querySelector('#departInput');
+                    if (memberDepartElement.value !== null && memberDepartElement.value !== undefined && memberDepartElement.value !== '') {
+                        td = memberDepartElement.parentNode;
+                        td.textContent = memberDepartElement.options[memberDepartElement.selectedIndex].text;
+                    }
+                }
 
-        if (memberTeamElement.value !== null && memberTeamElement.value !== undefined && memberTeamElement.value !== '') {
-            td = memberTeamElement.parentNode;
-            td.textContent = memberTeamElement.options[memberTeamElement.selectedIndex].text;
-        }
+                if (selectCnt >= 2) {
+                    memberTeamElement = table.querySelector('#teamInput');
+                    if (memberTeamElement.value !== null && memberTeamElement.value !== undefined && memberTeamElement.value !== '') {
+                        td = memberTeamElement.parentNode;
+                        td.textContent = memberTeamElement.options[memberTeamElement.selectedIndex].text;
+                    }
+                }
 
-        if (memberPartElement.value !== null && memberPartElement.value !== undefined && memberPartElement.value !== '') {
-            td = memberPartElement.parentNode;
-            td.textContent = memberPartElement.options[memberPartElement.selectedIndex].text;
-        }
+                if (selectCnt >= 3) {
+                    memberPartElement = table.querySelector('#partInput');
+                    if (memberPartElement.value !== null && memberPartElement.value !== undefined && memberPartElement.value !== '') {
+                        td = memberPartElement.parentNode;
+                        td.textContent = memberPartElement.options[memberPartElement.selectedIndex].text;
+                    }
+                }
 
-        fetch("/member/updateInfo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                memberSeq: memberSeq,
-                memberName: memberNameElement.value,
-                departmentSeq: memberDepartElement.value == 0 ? -1 : memberDepartElement.value,
-                teamSeq: memberTeamElement.value == 0 ? -1 : memberTeamElement.value,
-                partSeq: memberPartElement.value == 0 ? -1 : memberPartElement.value,
-            })
-        }).then((response) => {
-            alert("수정되었습니다.");
-            clickMember(memberSeq);
+                fetch("/member/updateInfo", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        memberSeq: memberSeq,
+                        memberName: memberNameElement.value,
+                        departmentSeq: selectCnt >= 1 ? memberDepartElement.value : -1,
+                        teamSeq: selectCnt >= 2 ? memberTeamElement.value : -1,
+                        partSeq: selectCnt >= 3 ? memberPartElement.value : -1,
+                    })
+                }).then((response) => {
+                    action_popup.alert("수정되었습니다.");
+                    clickMember(memberSeq);
+                    searchMember(selectedDepart);
+                })
+
+                e.style.display = "none";
+                let editBtnElement = document.querySelector(".profile-edit-btn");
+                editBtnElement.style.display = "block";
+            } else {
+
+            }
         })
 
-        isClickEdit = false;
     }
 
     const departElement = document.querySelectorAll(".depart");
     departElement.forEach((element) => {
-        element.addEventListener("click", searchMember);
+        element.addEventListener("click", function () {
+            searchMember($(this).attr('id'));
+        });
     })
 
-    function searchMember() {
+    function searchMember(departmentSeq) {
+
+        selectedDepart = departmentSeq;
 
         $.ajax({
             url: '/department/members',
             method: 'POST',
             dataType: 'json',
             data: {
-                departmentSeq: $(this).attr('id')
+                departmentSeq: departmentSeq
             },
             success: function (result) {
                 updateTable(result);
@@ -859,6 +1030,69 @@
 
             }
         })
+    }
+
+    function updateStatus(type, name) {
+
+        let selectedDepartNameElement = document.querySelector(".selectedDepartName");
+        let selectedTeamNameElement = document.querySelector(".selectedTeamName");
+        let selectedPartNameElement = document.querySelector(".selectedPartName");
+        if (type == 'first') {
+            selectedDepartNameElement.innerText = ' ' + name;
+            selectedTeamNameElement.innerHTML = '';
+            selectedPartNameElement.innerHTML = '';
+        } else if (type == 'second') {
+            selectedTeamNameElement.innerHTML = '<i class="fa-solid fa-chevron-right fa-xs" style="display: inline"></i> ' + name;
+            selectedPartNameElement.innerHTML = '';
+        } else if (type == 'third') {
+            selectedPartNameElement.innerHTML = '<i class="fa-solid fa-chevron-right fa-xs" style="display: inline"></i> ' + name;
+        }
+    }
+
+    function updateStatus2(html) {
+
+        $('.cont-tit').empty()
+        $('.cont-tit').append(html)
+    }
+
+    // 부서 클릭했을때
+    const firstElement = document.querySelectorAll(".first");
+    firstElement.forEach((element) => {
+        element.addEventListener("click", function () {
+            console.log(this.querySelector('span').innerText)
+            updateStatus2('<p>' + this.querySelector('span').innerText + '</p>')
+        });
+    })
+
+    // 팀 클릭했을때
+    const secondElement = document.querySelectorAll(".second");
+    secondElement.forEach((element) => {
+        element.addEventListener("click", function () {
+            console.log($(this).prevAll('.first:eq(0)').find('span').text(), this.innerText)
+            updateStatus2($(this).prevAll('.first:eq(0)').find('span').text() + '> <p>' + this.innerText + '</p>')
+        });
+    })
+
+    // 파트 클릭했을때
+    const thirdElement = document.querySelectorAll(".third");
+    thirdElement.forEach((element) => {
+        element.addEventListener("click", function () {
+            console.log($(this).prevAll('.first:eq(0)').find('span').text(), $(this).prevAll('.second:eq(0)').text(), this.innerText);
+
+            updateStatus2($(this).prevAll('.first:eq(0)').find('span').text() + ' > ' + $(this).prevAll('.second:eq(0)').text() + '> <p>' + this.innerText + '</p>')
+        });
+    })
+
+    const departName = $(".selectedDepartName");
+    const teamName = $(".selectedTeamName");
+    const partName = $(".selectedPartName");
+
+    if (partName.text().trim()) {
+        partName.addClass("active").siblings().removeClass("active");
+    } else if (teamName.text().trim()) {
+        teamName.addClass("active").siblings().removeClass("active");
+    } else {
+        departName.addClass("active").siblings().removeClass("active");
     }
 
     function updateTable(members) {
@@ -881,7 +1115,6 @@
 
     function clickMember(seq) {
         memberSeq = seq;
-        console.log(seq);
         $.ajax({
             url: '/member/info',
             method: "POST",
@@ -957,6 +1190,7 @@
 
     function modalOpen(e) {
         checkTarget = e;
+        selectCntForCreateMember = 3;
         modal.style.display = "block";
     };
 

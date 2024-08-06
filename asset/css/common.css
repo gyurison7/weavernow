@@ -125,7 +125,7 @@ input[type="checkbox"] + label { cursor: pointer; }
 .reg-form-area .reg-form-wrap .input-box.member .member-wrap { display: flex; flex-direction: column; gap: 10px; width: 100%; padding: 10px; } 
 .reg-form-area .reg-form-wrap .input-box.member .add-member-wrap { display: flex; flex-wrap: nowrap; gap: 10px; } 
 .reg-form-area .reg-form-wrap .input-box.member input { margin: 0; } 
-.reg-form-area .reg-form-wrap .input-box input:disabled { background-color: #fff; }
+.reg-form-area .reg-form-wrap .input-box input:disabled:not(.wage-header) { background-color: #fff; }
 .reg-form-area .reg-form-wrap .input-box #member-list { display: none; position: absolute; top: 40px; left: 160px; width: 100%; max-width: 629px; } 
 .reg-form-area .btn-wrap { justify-content: center; } 
 
