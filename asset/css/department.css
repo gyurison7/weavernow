@@ -1,12 +1,15 @@
-.cont-tit { font-size: 15px; color: #777; }
-.cont-tit span.active { color: #333; }
+.cont-tit { font-size: 15px; color: #777; } 
+.cont-tit span.active { color: #333; } 
 .container.department-container { padding: 0 20px 20px; font-size: 15px; } 
 .center-panel { width: 50%; margin: 0 20px; } 
 .right-panel { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 30%; border-left: 1px solid var(--border-gray); } 
 .right-panel .btn-wrap { padding-top: 30px; } 
 
-#modalWrap .title-area { padding: 0 0 20px; }
-#modalWrap .profile-area { border: 0; }
-#modalWrap .reg-form-area { padding: 20px 0 0; }
-#modalWrap .input-box.year, #modalWrap .input-box.rank { border-left: 1px solid var(--border-gray);}
+#modalWrap .title-area { padding: 0 0 20px; } 
+#modalWrap .profile-area { border: 0; } 
+#modalWrap .reg-form-area { padding: 20px 0 0; } 
+#modalWrap .input-box.year, #modalWrap .input-box.rank { border-left: 1px solid var(--border-gray); } 
 #modalWrap select { margin-left: 10px; } 
+ .image-upload { position: absolute; right: 0px; bottom: 5px; } 
+ .image-upload label { display: flex; justify-content: center; align-items: center; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #fff; background-color: #a6a6a6; color: #fff; cursor: pointer; } 
+ .image-upload input[type="file"] { position: absolute; width: 0; height: 0; padding: 0; overflow: hidden; border: 0; } 

@@ -70,7 +70,7 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 
 /*========== profile ==========*/
 .profile-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; border-radius: 8px; border: 1px solid var(--border-gray); } 
-.profile-area .profile-image { width: 150px; height: 150px; } 
+.profile-area .profile-image { position: relative; width: 150px; height: 150px; } 
 .profile-area .profile-image img { width: 100%; height: 100%; border-radius: 50%; } 
 .profile-area .profile-info { display: flex; flex-direction: column; } 
 .profile-area .profile-info table { font-size: 15px; text-align-last: left; white-space: nowrap; } 
