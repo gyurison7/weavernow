@@ -29,11 +29,9 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 .inner::-webkit-scrollbar { height: 10px; } 
 .inner::-webkit-scrollbar-thumb { background: var(--light-blue); border-radius: 8px; } 
 .title-area { display: flex; align-items: center; padding: 20px; } 
-.section-tit { display: flex; align-items: center; font-size: 24px; } 
+.section-tit { display: flex; align-items: center; gap: 4px; font-size: 24px; } 
 .contents { min-width: 1000px; height: 100%; margin: 0 20px; border: 1px solid var(--dark-gray); border-radius: 8px; background-color: #fff; } 
 .cont-tit { padding: 20px; } 
-.fa-plus { margin-left: 4px; } 
-.fa-file-excel { margin-right: 6px; } 
 
 /*========== Table ==========*/
 .common-table-wrap { display: flex; width: 100%; padding: 0 20px 20px; font-size: 15px; } 
@@ -45,28 +43,33 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 .add-table-wrap::-webkit-scrollbar-thumb { background: var(--dark-gray); border-radius: 8px; } 
 .common-table.add-table { min-width: 290px; } 
 .common-table.last-table { border-right: 1px solid var(--dark-gray); } 
+.reg-table-wrap { padding: 20px 0; }
+.reg-table-wrap .common-table.main-table, .reg-table-wrap .add-table-wrap { width: 50%; }
 .common-table thead { background-color: var(--main-blue); } 
 .common-table thead th { padding: 0.89em 1.11em; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); color: #fff; text-align: center; vertical-align: middle; white-space: nowrap; } 
-.common-table tbody tr td { height: 60px; padding: 0.8em 0.5em; background-color: #fff; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); text-align: center; vertical-align: middle; } 
+.common-table tbody tr td { width: 12.5%; height: 60px; padding: 0.8em 0.5em; background-color: #fff; border-bottom: 1px solid var(--dark-gray); border-left: 1px solid var(--dark-gray); text-align: center; vertical-align: middle; } 
+.common-table tbody tr td:first-child { width: 5%; }
 .common-table tbody tr.sum td { background-color: var(--light-gray); } 
 .con-td { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; } 
 .totalWageSum, .totalSalarySum { color: var(--main-blue); } 
 
 /*========== Button ==========*/
-.btn-wrap { display: flex; gap: 10px; } 
-.common-btn { display: inline-block; min-width: 110px; height: auto; padding: 10px 15px; background-color: var(--main-blue); border-radius: 8px; font-size: 15px; color: #fff; text-align: center; white-space: nowrap; box-shadow: 2px 5px 10px rgba(103, 114, 229, 0.3); transition: all 0.3s ease; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; } 
+.btn-wrap { display: flex; justify-content: center; gap: 10px; } 
+.common-btn { display: inline-block; min-width: 110px; height: auto; padding: 10px 15px; background-color: var(--main-blue); border-radius: 8px; font-size: 15px; color: #fff; text-align: center; word-break: keep-all; box-shadow: 2px 5px 10px rgba(103, 114, 229, 0.3); transition: all 0.3s ease; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; } 
 .common-btn.modify-btn { background-color: #FCD669; box-shadow: 2px 5px 10px rgba(252, 214, 105, 0.3); } 
 .common-btn.download-btn { background-color: #58D5A9; box-shadow: 2px 5px 10px rgba(88, 213, 169, 0.3); } 
 .common-btn.cancel-btn { background-color: #E6E6E6; color: #333; box-shadow: 2px 5px 10px rgba(230, 230, 230, 0.3); } 
 .common-btn.border-btn { background-color: #fff; border: 1px solid var(--main-blue); color: var(--main-blue); } 
+.common-btn.small-btn { min-width: auto; max-height: 36px; padding: 8px 15px; box-shadow: none; } 
+.common-btn.remove-btn { border-color: #FF503C; color: #FF503C; } 
 .common-btn.btn-hover:hover { transform: translateY(-4px); box-shadow: 5px 5px 15px rgba(103, 114, 229, 0.5); } 
 .common-btn.modify-btn:hover { box-shadow: 5px 5px 15px rgba(252, 214, 105, 0.5); } 
 .common-btn.download-btn:hover { box-shadow: 5px 5px 15px rgba(88, 213, 169, 0.5); } 
 .common-btn.cancel-btn:hover { box-shadow: 5px 5px 15px rgba(230, 230, 230, 0.5); } 
-.small-btn { min-width: auto; max-height: 36px; padding: 8px 15px; box-shadow: none; } 
 .reg-member-btn { margin-left: 15px; } 
 .profile-save-btn { display: none; } 
-.common-btn.remove-member { border-color: #FF503C; color: #FF503C; } 
+.project-reg-btn i { margin-left: 4px; }
+.download-btn i { margin-right: 6px; }
 
 /*========== profile ==========*/
 .profile-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; border-radius: 8px; border: 1px solid var(--border-gray); } 
@@ -80,6 +83,7 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 
 /*========== link ==========*/
 .common-link { border-bottom: 1px solid var(--main-blue); color: var(--main-blue); font-variation-settings: "wght" 600; } 
+.link { color: var(--main-blue); font-variation-settings: "wght" 600; }
 
 /*========== badge ==========*/
 .status { display: block; width: 70px; height: 30px; border-radius: 16px; line-height: 30px; -webkit-border-radius: 16px; -moz-border-radius: 16px; -ms-border-radius: 16px; -o-border-radius: 16px; } 
@@ -88,7 +92,7 @@ body { width: 100%; overflow: hidden; background-color: #D8DDE3; }
 .done { background-color: var(--dark-gray); color: #676767; } 
 
 /*========== Input ==========*/
-.input-box input { width: 100%; height: auto; max-height: 34px; padding: 8px 12px; border: 1px solid var(--border-gray); border-radius: 4px; font-size: 14px; color: #777; } 
+.input-box input { width: 100%; height: auto; max-height: 34px; padding: 8px 12px; border: 1px solid var(--border-gray); border-radius: 4px; font-size: 14px; color: #333; } 
 input.common-btn { color: #fff; } 
 input.detail-input { min-width: 64px; color: var(--main-blue); font-weight: 500; font-variation-settings: "wght" 500; text-align: center; } 
 .salary.detail-input { width: 120px; } 
@@ -113,6 +117,7 @@ input[type="checkbox"] + label { cursor: pointer; }
 /*========== Form ==========*/
 .reg-form-area { padding: 20px; font-size: 15px; } 
 .reg-form-area .reg-form-wrap { display: flex; flex-direction: column; margin-bottom: 30px; border-top: 1px solid var(--border-gray); border-left: 1px solid var(--border-gray); border-right: 1px solid var(--border-gray); } 
+.reg-form-area .reg-form-wrap.no-border { border: 0; }
 .reg-form-area .reg-form-wrap .input-box-wrap { display: flex; border-bottom: 1px solid var(--border-gray); } 
 .reg-form-area .reg-form-wrap .input-box { display: flex; align-items: center; flex: 1; } 
 .reg-form-area .reg-form-wrap .input-box.datepicker-to { border-left: 1px solid var(--border-gray); } 
@@ -127,10 +132,11 @@ input[type="checkbox"] + label { cursor: pointer; }
 .reg-form-area .reg-form-wrap .input-box.member input { margin: 0; } 
 .reg-form-area .reg-form-wrap .input-box input:disabled:not(.wage-header) { background-color: #fff; }
 .reg-form-area .reg-form-wrap .input-box #member-list { display: none; position: absolute; top: 40px; left: 160px; width: 100%; max-width: 629px; } 
+.reg-form-area .reg-form-wrap .input-box.select select { margin-left: 10px; }
 .reg-form-area .btn-wrap { justify-content: center; } 
 
 /*========== Select ==========*/
-select { min-width: 64px; height: 34px; padding: 4px 12px; border: 1px solid #C9C9C9; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; } 
+select { min-width: 64px; height: 34px; padding: 4px 24px 4px 12px; border: 1px solid #C9C9C9; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; } 
 .year-select { min-width: 70px; margin-left: 10px; } 
 
 /*========== modal ==========*/
@@ -139,3 +145,21 @@ select { min-width: 64px; height: 34px; padding: 4px 12px; border: 1px solid #C9
 .common-modal .modal-body .modal-text { padding-top: 30px; }
 .common-modal .modal-body .btn-wrap { padding-top: 24px; }
 .common-modal .modal-body .btn-wrap button { box-shadow: none; }
+
+/*========== tab ==========*/
+.tab-wrap { display: flex; margin-left: 20px; }
+.tab-wrap .tab a { padding: 10px 30px; border: 1px solid var(--dark-gray); border-bottom: none; border-top-left-radius: 8px; border-top-right-radius: 8px; background: #fff; text-transform:  uppercase; }
+.tab-wrap .tab.active a { background: var(--main-blue); color: #fff; }
+.tab-wrap .tab +.tab a { border-left: none; }
+.tab-wrap + .contents { border-top-left-radius: 0; border-top-right-radius: 0; }
+
+/*========== radio ==========*/
+.radio-btn-wrap { display: flex; justify-content: center; gap: 10px; }
+.radio-btn-wrap label { display: flex; align-items: center; }
+.radio-btn { display: flex; justify-content: center; align-items: center; width: 18px; height: 18px; margin: 3px 5px 3px 3px; border-radius: 4px; border: 1px solid var(--dark-gray); }
+.radio-btn:checked { border: 1px solid var(--main-blue); background: var(--main-blue);}
+.radio-btn:checked::before { display: block; width: 12px; height: 12px; background: url("../images/common/radio-check.svg") no-repeat center / cover; content: ''; }
+
+/*========== textarea ==========*/
+.textarea-wrap { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+.textarea { width: 50%; min-height: 200px; padding: 20px; border-radius: 4px; border: 1px solid var(--border-gray); font-size: 14px; }

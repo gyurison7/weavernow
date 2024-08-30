@@ -55,8 +55,15 @@
                         <div class="title-area">
                             <h2 class="section-tit">프로젝트 등록</h2>
                         </div>
+                        <div class="tab-wrap">
+                            <!-- 현재 페이지 active 추가 -->
+                            <div class="tab active"><a href="./project-reg-step1.html">step1</a></div>
+                            <div class="tab"><a href="./project-reg-step2.html">step2</a></div>
+                            <div class="tab"><a href="./project-reg-step3.html">step3</a></div>
+                        </div>
                         <div class="contents">
                             <div class="reg-form-area">
+                                
                                 <div class="reg-form-wrap" id="form-wrap">
                                     <div class="input-box-wrap">
                                         <div class="input-box">
@@ -137,11 +144,23 @@
                                                    placeholder="급여">
                                         </div>
                                     </div>
+                                    <div class="input-box-wrap">
+                                        <div class="input-box select">
+                                            <label for="">노임단가표</label>
+                                            <select name="" id="">
+                                                <option value="">선택</option>
+                                                <option value="아모레단가표">아모레단가표</option>
+                                                <option value="아모레단가표">아모레단가표</option>
+                                                <option value="아모레단가표">아모레단가표</option>
+                                                <option value="아모레단가표">아모레단가표</option>
+                                                <option value="아모레단가표">아모레단가표</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="btn-wrap">
                                     <a href="/html/project-list.html" class="common-btn cancel-btn btn-hover">취소</a>
-                                    <button type="submit" class="common-btn btn-hover" onclick="saveProjectClick()">저장
-                                    </button>
+                                    <a href="/html/project-reg-step2.html" class="common-btn btn-hover">다음</a>
                                 </div>
                             </div>
                         </div>

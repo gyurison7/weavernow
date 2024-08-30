@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <link rel="stylesheet" href="../asset/css/registration.css">
+        <link rel="stylesheet" href="../asset/css/jquery-ui.min.css">
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/jquery-ui.min.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--========== HEADER ==========-->
+            <div class="header-wrap"></div>
+            <script>
+                $(function () {
+                    $(".header-wrap").load("include/header.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/header.js");
+                    });
+                });
+            </script>
+
+            <!--========== CONTENTS ==========-->
+            <main class="main">
+                <section class="section">
+                    <div class="inner">
+                        <div class="title-area">
+                            <h2 class="section-tit">프로젝트 등록</h2>
+                        </div>
+                        <div class="tab-wrap">
+                            <div class="tab"><a href="./project-reg-step1.html">step1</a></div>
+                            <div class="tab"><a href="./project-reg-step2.html">step2</a></div>
+                            <div class="tab active"><a href="./project-reg-step3.html">step3</a></div>
+                        </div>
+                        <div class="contents">
+                            <div class="reg-form-area">
+                                <div class="reg-form-wrap no-border" id="form-wrap">
+                                    <div class="radio-btn-wrap">
+                                        <label for="option-all">
+                                            <input type="radio" class="radio-btn" id="option-all" name="reg-radio" value="" checked>일괄 등록
+                                        </label>
+                                        <label for="option-each">
+                                            <input type="radio" class="radio-btn" id="option-each" name="reg-radio" value="">개별 등록
+                                        </label>
+                                    </div>
+                                    <div class="all-reg">
+                                        <div class="textarea-wrap">
+                                            <textarea name="" id="" class="textarea"></textarea>
+                                            <button class="common-btn border-btn small-btn" onclick="addTextarea()">추가</button>
+                                        </div>
+                                    </div>
+                                    <div class="each-reg">
+                                        <div class="reg-box-wrap">
+                                            <div class="reg-box">
+                                                <select name="" id="">
+                                                    <option value="">업무</option>
+                                                    <option value="">개발</option>
+                                                    <option value="">기획</option>
+                                                </select>
+                                                <div class="input-box-wrap">
+                                                    <div class="input-box">
+                                                        <input type="text" name="" id="">
+                                                        <button class="common-btn border-btn small-btn" onclick="addInputbox(this)"><i class="fa-solid fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="common-btn border-btn small-btn" onclick="addRegBoxWrap()">추가</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-wrap">
+                                    <a href="/html/project-reg-step2.html" class="common-btn cancel-btn btn-hover">이전</a>
+                                    <button type="submit" class="common-btn btn-hover" onclick="saveProjectClick()">저장</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </main>         
+
+            <!--========== FOOTER ==========-->
+            <footer id="footer"></footer>
+            <script>
+                $(function () {
+                    $("#footer").load("include/footer.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/basic.js");
+                    });
+                });
+            </script>
+        </div>
+
+        <script>
+            // 일괄 등록/개별 등록 전환
+            $(".radio-btn").click(function() {
+                if($(this).is("#option-all")){
+                    $(".all-reg").show();
+                    $(".each-reg").hide();
+                } else {
+                    $(".each-reg").show();
+                    $(".all-reg").hide();
+                }
+            });
+
+            // 일괄 등록 - textarea 추가
+            function addTextarea() {
+                var html = `
+                    <div class="textarea-wrap add-textarea-wrap">
+                        <textarea name="" id="" class="textarea"></textarea>
+                        <button class="common-btn border-btn remove-btn small-btn" onclick="removeTextarea(this)">삭제</button>
+                    </div>
+                `;
+                $(".all-reg").append(html);
+            }
+
+            // 일괄 등록 - textarea 삭제
+            function removeTextarea(btn) {
+                $(btn).closest(".add-textarea-wrap").remove();
+            }
+
+            // 개별 등록 - regboxwrap 추가
+            function addRegBoxWrap() {
+                var html = `
+                    <div class="reg-box-wrap">
+                        <div class="reg-box">
+                            <select name="" id="">
+                                <option value="">업무</option>
+                                <option value="">개발</option>
+                                <option value="">기획</option>
+                            </select>
+                            <div class="input-box-wrap">
+                                <div class="input-box">
+                                    <input type="text" name="" id="">
+                                    <button class="common-btn border-btn small-btn" onclick="addInputbox(this)"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="common-btn border-btn remove-btn small-btn" onclick="removeRegBoxWrap(this)">삭제</button>
+                    </div>
+                
+                `;
+                $(".each-reg").append(html);
+            }
+            // 개별 등록 - regboxwrap 삭제
+            function removeRegBoxWrap(btn) {
+                $(btn).closest(".reg-box-wrap").remove();
+            }
+
+            // 개별 등록 - inputbox 추가
+            function addInputbox(btn) {
+                var html = `
+                    <div class="input-box">
+                        <input type="text" name="" id="">
+                        <button class="common-btn border-btn remove-btn small-btn" onclick="removeInputbox(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                `;
+                $(btn).closest(".input-box-wrap").append(html);
+            }
+
+            // 개별 등록 - inputbox 삭제
+            function removeInputbox(btn) {
+                $(btn).closest(".input-box").remove();
+            }
+
+            function saveProjectClick() {
+        
+                if (!validateForm()) {
+                    return;
+                }
+        
+                let elements = document.querySelectorAll('.projectMember');
+        
+                let memberList = [];
+                elements.forEach(function (element) { // 프로젝트 멤버 리스트 추가
+                    let member = {
+                        memberSeq: element.querySelector('.memberName').name,
+                        memberName: element.querySelector('.memberName').value,
+                        memberJob: element.querySelector('.memberJob').value
+                    };
+                    memberList.push(member);
+                });
+        
+                let pm = {
+                    memberSeq: document.getElementById('pm').name,
+                    memberName: document.getElementById('pm').value,
+                    memberJob: 'IT PM'
+                };
+        
+                let data = {
+                    projectName: document.getElementById('project-name').value,
+                    startDate: document.getElementById('datepicker-from').value,
+                    endDate: document.getElementById('datepicker-to').value,
+                    memberList: memberList,
+                    pm: pm,
+                    wageWeight1: document.getElementById('cost-weight').value,
+                    wageWeight2: document.getElementById('tech-weight').value,
+                    salaryWeight: document.getElementById('salary-weight').value
+                };
+        
+                $.ajax({
+                    url: '/project/createProject',
+                    type: 'post',
+                    dataType: "text",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function (response) {
+                        console.log("success: ", response);
+                        window.location.href = "/project/List";
+                    },
+                    error: function (request, status, error) {
+                        console.log(request);
+                        console.log(status);
+                        console.log(error);
+                    },
+                })
+            }
+        
+        </script>
+        
+    </body>
+</html>

@@ -1,3 +1,7 @@
+.wage-title { padding-bottom: 20px; }
+.wage-title .input-box-wrap { display: flex; }
+.wage-title .input-box-wrap .input-box { flex: 1; }
+
 .reg-form-area .reg-form-wrap .input-box .wage-header { height: 50px; max-height: 50px; margin: 0; border-radius: 0; border: 0; background-color: var(--main-blue); color: #fff; text-align: center; } 
 .reg-form-area .reg-form-wrap .input-box .wage-header + .wage-header { border-left: 1px solid var(--border-gray); } 
 .reg-form-area .reg-form-wrap .input-box .job { background: transparent; } 

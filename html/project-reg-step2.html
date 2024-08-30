@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="../asset/images/common/img_opengraph.png">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../asset/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../assets/img/favicon/manifest.json">
+        <meta name="msapplication-TileImage" content="../assets/img/favicon/ms-icon-144x144.png">
+        <!-- css -->
+        <link rel="preload" href="../asset/font/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="../asset/css/common.css">
+        <!-- js -->
+        <script src="../asset/js/jquery-1.12.4.min.js"></script>
+        <script src="../asset/js/basic.js"></script>
+        <script src="../asset/js/fontawesome.js" crossorigin="anonymous"></script>
+        <title>Weaver Now</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--========== HEADER ==========-->
+            <div class="header-wrap"></div>
+            <script>
+                $(function () {
+                    $(".header-wrap").load("include/header.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/header.js");
+                    });
+                });
+            </script>
+
+            <!--========== CONTENTS ==========-->
+            <main class="main">
+                <section class="section">
+                    <div class="inner">
+                        <div class="title-area">
+                            <h2 class="section-tit">프로젝트 등록</h2>
+                        </div>
+                        <div class="tab-wrap">
+                            <div class="tab"><a href="./project-reg-step1.html">step1</a></div>
+                            <div class="tab active"><a href="./project-reg-step2.html">step2</a></div>
+                            <div class="tab"><a href="./project-reg-step3.html">step3</a></div>
+                        </div>
+                        <div class="contents">
+                            <div class="reg-table-wrap">
+                                <div class="common-table-wrap">
+                                    <table class="common-table main-table">
+                                        <caption class="hidden">프로젝트 상세 현황</caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="cell-th cell-min" scope="col"><div class="con-th"></div></th>
+                                                <th class="cell-th" colspan="5" scope="col"><div class="con-th">직급 및 동급</div></th>
+                                                <th class="cell-th" colspan="2" scope="col"><div class="con-th">견적용 노임단가</div></th>
+                                            </tr>
+                                            <tr>
+                                                <th class="cell-th cell-min"><div class="con-th">이름</div></th>
+                                                <th class="cell-th"><div class="con-th">소속</div></th>
+                                                <th class="cell-th"><div class="con-th">직급</div></th>
+                                                <th class="cell-th"><div class="con-th">직무</div></th>
+                                                <th class="cell-th"><div class="con-th">할인율</div></th>
+                                                <th class="cell-th"><div class="con-th">기술등급</div></th>
+                                                
+                                                <th class="cell-th"><div class="con-th">노임단가</div></th>
+                                                <th class="cell-th"><div class="con-th">총비용</div></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell-td" scope="row"><div class="con-td">손규리</div></td>
+                                                <td class="cell-td"><div class="con-td">UX팀</div></td>
+                                                <td class="cell-td"><div class="con-td">P2</div></td>
+                                                <td class="cell-td">
+                                                    <div class="con-td">
+                                                        <select name="select-job" id="select-job">
+                                                            <option>선택</option>
+                                                            <option value="">IT기획자</option>
+                                                            <option value="">IT컨설턴트</option>
+                                                            <option value="">업무분석가</option>
+                                                            <option value="">데이터분석가</option>
+                                                            <option value="">IT PM</option>
+                                                            <option value="">IT아키텍트</option>
+                                                            <option value="">UI/UX기획/개발자</option>
+                                                            <option value="">UI/UX디자이너</option>
+                                                            <option value="">응용SW개발자</option>
+                                                            <option value="">시스템SW개발자</option>
+                                                            <option value="">정보시스템운용자</option>
+                                                            <option value="">IT지원기술자</option>
+                                                            <option value="">IT마케터</option>
+                                                            <option value="">IT품질관리자</option>
+                                                            <option value="">IT테스터</option>
+                                                            <option value="">IT감리</option>
+                                                            <option value="">정보보안전문가</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td class="cell-td">
+                                                    <div class="con-td">
+                                                        <div class="input-box">
+                                                            <input type="text" class="detail-input">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="cell-td">
+                                                    <div class="con-td">
+                                                        <select class="memberGrade-${member.MEMBER_SEQ}" name="select-grade" id="select-grade" onchange="changeMemberGrade()">
+                                                        <option value="초급" ${member.GRADE == '초급' ? 'selected' : ''}>초급</option>
+                                                        <option value="중급" ${member.GRADE == '중급' ? 'selected' : ''}>중급</option>
+                                                        <option value="고급" ${member.GRADE == '고급' ? 'selected' : ''}>고급</option>
+                                                        <option value="특급" ${member.GRADE == '특급' ? 'selected' : ''}>특급</option>
+                                                    </select>
+                                                    </div>
+                                                </td>
+                                                <!-- basic.js .num 숫자 자리수 스크립트 참조 -->
+                                                <td class="cell-td"><div class="con-td num">7900000</div></td>
+                                                <td class="cell-td"><div class="con-td num">17000000</div></td>
+                                                
+                                            </tr>
+                                            <!-- 합계 -->
+                                            <tr class="sum">
+                                                <td class="cell-td" scope="row"><div class="con-td">합계</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                <td class="cell-td"><div class="con-td num">24700000</div></td>
+                                                <td class="cell-td"><div class="con-td num">53126000</div></td>
+                                            </tr>
+                                            <!-- 합계 : 노임단가 -->
+                                            <tr>
+                                                <td class="cell-td" colspan="6" scope="row"><div class="con-td">합계(노임단가)</div></td>
+                                                <td class="cell-td"><div class="con-td num totalWageSum">163100000</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                            <!-- 합계 : 실급여 -->
+                                            <tr>
+                                                <td class="cell-td" colspan="6" scope="row"><div class="con-td">합계(실급여)</div></td>
+                                                <td class="cell-td"><div class="con-td num totalSalarySum">0</div></td>
+                                                <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="add-table-wrap">
+                                        <table class="common-table add-table">
+                                            <caption class="hidden">프로젝트 상세 현황</caption>
+                                            <thead>
+                                                <tr>
+                                                    <th class="cell-th" colspan="4" scope="col"><div class="con-th">2024-01</div></th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="cell-th"><div class="con-th">계획공수(일)</div></th>
+                                                    <th class="cell-th"><div class="con-th">계획공수(M/M)</div></th>
+                                                    <th class="cell-th"><div class="con-th">노임단가비용</div></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell-td" scope="row">
+                                                        <div class="con-td">
+                                                            <div class="input-box">
+                                                                <input type="text" class="detail-input">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="cell-td"><div class="con-td num">0.72</div></td>
+                                                    <td class="cell-td"><div class="con-td num">12200000</div></td>
+                                                </tr>
+                                                <!-- 합계 -->
+                                                <tr class="sum">
+                                                    <td class="cell-td" scope="row"><div class="con-td">48</div></td>
+                                                    <td class="cell-td"><div class="con-td num">2.3</div></td>
+                                                    <td class="cell-td"><div class="con-td num">12200000</div></td>
+                                                </tr>
+                                                <!-- 합계 : 노임단가 -->
+                                                <tr>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                </tr>
+                                                <!-- 합계 : 실급여 -->
+                                                <tr>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="common-table add-table last-table">
+                                            <caption class="hidden">프로젝트 상세 현황</caption>
+                                            <thead>
+                                                <tr>
+                                                    <th class="cell-th" colspan="4" scope="col"><div class="con-th">2024-02</div></th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="cell-th"><div class="con-th">계획공수(일)</div></th>
+                                                    <th class="cell-th"><div class="con-th">계획공수(M/M)</div></th>
+                                                    <th class="cell-th"><div class="con-th">노임단가비용</div></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell-td" scope="row">
+                                                        <div class="con-td">
+                                                            <div class="input-box-wrap">
+                                                                <div class="input-box text">
+                                                                    <input type="text" class="detail-input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="cell-td"><div class="con-td num">0.72</div></td>
+                                                    <td class="cell-td"><div class="con-td num">12200000</div></td>
+                                                </tr>
+                                                <!-- 합계 -->
+                                                <tr class="sum">
+                                                    <td class="cell-td" scope="row"><div class="con-td">48</div></td>
+                                                    <td class="cell-td"><div class="con-td num">2.3</div></td>
+                                                    <td class="cell-td"><div class="con-td num">12200000</div></td>
+                                                </tr>
+                                                <!-- 합계 : 노임단가 -->
+                                                <tr>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                </tr>
+                                                <!-- 합계 : 실급여 -->
+                                                <tr>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                    <td class="cell-td"><div class="con-td">&nbsp;</div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="btn-wrap">
+                                    <a href="/html/project-reg-step1.html" class="common-btn cancel-btn btn-hover">이전</a>
+                                    <a href="/html/project-reg-step3.html" class="common-btn btn-hover">다음</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!--========== FOOTER ==========-->
+            <footer id="footer"></footer>
+            <script>
+                $(function () {
+                    $("#footer").load("include/footer.html", function () {
+                        // 로드된 후에 실행될 코드
+                        $.getScript("../asset/js/basic.js");
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
